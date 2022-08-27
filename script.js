@@ -59,7 +59,7 @@ function recolectar() {
             mochila.push(articulos[chance])
             recoleccion.push(articulos[chance])
         }
-        alert("Recolectaste esto " + recoleccion)
+        alert("Recolectaste esto: " + recoleccion)
         alert("Se agregaron a tu mochila")
 
     } else {
@@ -77,7 +77,7 @@ function estadoSalud() {
 while (salud > 0) {
     if (hambre < 10) {
         salud--
-        alert("tienes hambre tu salud esta bajando. Salud " + salud)
+        alert("tienes hambre tu salud esta bajando. Salud: " + salud)
     }
 
     if (hora == 24) {
@@ -92,18 +92,24 @@ while (salud > 0) {
     }
     alert("que quieres hacer?")
     alert("son las " + hora + " horas del dia " + dias)
-    sAction = prompt("1-Comer 2-Dormir 3-Ver mochila 4-Recolectar 5-Estado de salud")
-    if (sAction == "1") {
-        comer();
-    } else if (sAction == "2") {
-        dormir();
-    } else if (sAction == "3") {
-        inventario();
-    } else if (sAction == "4") {
-        recolectar()
-    } else if (sAction == "5") {
-        estadoSalud()
+    let sAction = prompt("1-Comer 2-Dormir 3-Ver mochila 4-Recolectar 5-Estado de salud")
+    if (sAction >= 1 && sAction <= 5) {
+        if (sAction == "1") {
+            comer();
+        } else if (sAction == 2) {
+            dormir();
+        } else if (sAction == 3) {
+            inventario();
+        } else if (sAction == 4) {
+            recolectar()
+        } else if (sAction == 5) {
+            estadoSalud()
+    }
+    } else {
+        alert("Opción invalida, intente nuevamente")
     }
 
 }
 alert("Has muerto")
+
+
