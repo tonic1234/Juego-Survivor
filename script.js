@@ -98,6 +98,8 @@ function dormir() {
 
 function esperar() {
     hora += 3
+    cansancio += 30
+    hambre += 20
     let frase = Math.ceil(Math.random() * frasesDeEspera.length - 1);
     alert(frasesDeEspera[frase])
 }
@@ -172,9 +174,13 @@ alert(` ---------------------------------------------------
 while (salud > 0) {
 
 
-    if (hambre < 10) {
-        salud--
+    if (hambre > 100) {
+        salud-=10
         alert("Tienes hambre, tu salud está bajando. Salud: " + salud)
+    }
+    if(cansancio > 100){
+        alert("Tienes mucho sueño te quedas dormido")
+        dormir()
     }
 
     // Cada 24 horas se suma un dia 
