@@ -11,7 +11,7 @@ let dias = 0
 
 // Arreglo de la mochila del jugador.
 
-const mochila = ["Frutas Silvestres","Frutas Silvestres","Frutas Silvestres"]
+const mochila = ["Buzo de lana","Reloj"]
 
 // Arreglo de los objetos que hay en el juego.
 
@@ -141,6 +141,14 @@ function estadoSalud() {
     alert("Tu nivel de hambre es: " + hambre)
 }
 
+alert("Este juego utiliza el modelo de procesamiento gráfico mas potente del mercado...")
+alert("Tu imaginación")
+alert(` -----Despiertas en un bosque, tienes un gran
+        dolor de cabeza y no recuerdas nada, absolutamente nada.
+        En el suelo a pocos metros de ti hay una mochila, la agarras,
+        tiene un buzo de lana que en la etiqueta dice Javier y
+        un reloj que funciona pero tiene la correa rota`)
+
 while (salud > 0) {
 
     
@@ -163,6 +171,8 @@ while (salud > 0) {
         dias++
 
     }
+    
+
     alert("que quieres hacer?")
     alert("son las " + hora + " horas del dia " + dias)
     let sAction = prompt("1-Comer 2-Dormir 3-Ver mochila 4-Recolectar 5-Estado de salud")
