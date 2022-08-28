@@ -11,7 +11,7 @@ let dias = 0
 
 // Arreglo de la mochila del jugador.
 
-const mochila = ["Buzo de lana","Reloj"]
+const mochila = ["Buzo de lana", "Reloj"]
 
 // Arreglo de los objetos que hay en el juego.
 
@@ -22,12 +22,14 @@ const objetos = ["Palo", "Frutas Silvestres", "Piedra", "Hoja de Palmera"]
 
 let recoleccion = []
 
+// Arreglo de frases para la pantalla de espera .
 
 const frasesDeEspera = ["Te sientas bajo un árbol a esperar que pasen algunas horas",
-"Miras las hormigas llevar hojas a su hormiguero para entretenerte algunas horas",
-"Escuchas como los pájaros cantan y esperas que pase el tiempo",
-"Buscas formas en las nubes para pasar el rato",
-"Intentas buscar recuerdos en tu memoria y pasan algunas horas"]
+    "Miras las hormigas llevar hojas a su hormiguero para entretenerte algunas horas",
+    "Escuchas como los pájaros cantan y esperas que pase el tiempo",
+    "Buscas formas en las nubes para pasar el rato",
+    "Intentas buscar recuerdos en tu memoria y pasan algunas horas"
+]
 
 // Función de la acción comer .
 
@@ -43,19 +45,19 @@ function comer() {
         cansancio += 20
         hora += 1
 
-    //   Si hay frutas en el arreglo mochila la fruta tiene que Ser
-    //   eliminada de mi arreglo cuando el personaje la coma
+        //   Si hay frutas en el arreglo mochila la fruta tiene que Ser
+        //   eliminada de mi arreglo cuando el personaje la coma
 
-    // 1-filtro todo los elementos que no son fruta y creo el arreglo filtrados
-    // 2-filtro todos los elemento fruta en el arreglo no filtrados
-        
+        // 1-filtro todo los elementos que no son fruta y creo el arreglo filtrados
+        // 2-filtro todos los elemento fruta en el arreglo no filtrados
+
         const filtrados = mochila.filter(element => element != "Frutas Silvestres")
         const noFiltrados = mochila.filter(element => element == "Frutas Silvestres")
-              
-       // Vació el arreglo mochila
+
+        // Vació el arreglo mochila
 
         mochila.length = 0;
-        
+
         // Pongo los elementos del arreglo filtrados dentro de arreglo mochila
 
         Array.prototype.push.apply(mochila, filtrados);
@@ -68,7 +70,7 @@ function comer() {
 
         for (let index = 0; index < noFiltrados.length - 1; index++) {
             mochila.push("Frutas Silvestres")
-                   }
+        }
         alert("Tu nivel de hambre es: " + hambre)
 
     } else {
@@ -98,7 +100,7 @@ function esperar() {
     hora += 3
     let frase = Math.ceil(Math.random() * frasesDeEspera.length - 1);
     alert(frasesDeEspera[frase])
-    }
+}
 
 // Función de la acción inventario .
 
@@ -156,6 +158,7 @@ function estadoSalud() {
     alert("Tu nivel de hambre es: " + hambre)
 }
 
+
 alert("Este juego utiliza el modelo de procesamiento gráfico más potente del mercado...")
 alert("Tu imaginación")
 alert(` ---------------------------------------------------
@@ -168,7 +171,7 @@ alert(` ---------------------------------------------------
 
 while (salud > 0) {
 
-    
+
     if (hambre < 10) {
         salud--
         alert("Tienes hambre, tu salud está bajando. Salud: " + salud)
@@ -188,20 +191,21 @@ while (salud > 0) {
         dias++
 
     }
-    
 
-    alert("==Qué quieres hacer?")
+
+    alert("¿Qué quieres hacer?")
     alert("Son las: " + hora + " horas del día " + dias)
     let sAction = prompt(`-----------------
-    1-Comer
-    2-Dormir
-    3-Ver mochila
-    4-Recolectar
-    5-Estado de salud
-    6-Esperar
+    1-Comer.
+    2-Dormir.
+    3-Ver mochila.
+    4-Recolectar.
+    5-Estado de salud.
+    6-Esperar.
+    7-Salir del juego.
     -----------------`)
-    if (sAction >= 1 && sAction <= 6) {
-        if (sAction == "1") {
+    if (sAction >= 1 && sAction <= 7) {
+        if (sAction == 1) {
             comer();
         } else if (sAction == 2) {
             dormir();
@@ -211,12 +215,20 @@ while (salud > 0) {
             recolectar()
         } else if (sAction == 5) {
             estadoSalud()
-        }else if (sAction == 6) {
+        } else if (sAction == 6) {
             esperar()
+        } else if (sAction == 7) {
+            break;
         }
+
     } else {
         alert("Opción inválida, intente nuevamente")
     }
 
 }
-alert("Has muerto.")
+if(salud <= 0){
+    alert("Has muerto.")
+}
+else{
+    alert("Gracias por jugar")
+}
