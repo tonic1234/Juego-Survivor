@@ -22,11 +22,18 @@ const objetos = ["Palo", "Frutas Silvestres", "Piedra", "Hoja de Palmera"]
 
 let recoleccion = []
 
+
+const frasesDeEspera = ["Te sientas bajo un árbol a esperar que pasen algunas horas",
+"Miras las hormigas llevar hojas a su hormiguero para entretenerte algunas horas",
+"Escuchas como los pájaros cantan y esperas que pase el tiempo",
+"Buscas formas en las nubes para pasar el rato",
+"Intentas buscar recuerdos en tu memoria y pasan algunas horas"]
+
 // Función de la acción comer .
 
 function comer() {
     if (hambre < 20) {
-        alert("No puedes comer no tienes hambre")
+        alert("No puedes comer, no tienes hambre")
 
         // Con el método includes verifico si Frutas Silvestres que es
         //  el único alimento por el momento esta en mi arreglo mochila
@@ -62,10 +69,10 @@ function comer() {
         for (let index = 0; index < noFiltrados.length - 1; index++) {
             mochila.push("Frutas Silvestres")
                    }
-        alert("Tu nivel de hambre es " + hambre)
+        alert("Tu nivel de hambre es: " + hambre)
 
     } else {
-        alert("No tienes comida en tu mochila")
+        alert("No tienes comida en tu mochila.")
 
     }
 }
@@ -74,27 +81,35 @@ function comer() {
 
 function dormir() {
     if (cansancio <= 30) {
-        alert("No puedes dormir no tienes sueño")
+        alert("No puedes dormir, no tienes sueño.")
 
     } else {
         cansancio -= 30
         hambre += 20
         hora += 6
-        alert("Tu nivel de sueño es " + cansancio)
+        alert("Tu nivel de sueño es: " + cansancio)
 
     }
 }
+
+// Función de la acción esperar .
+
+function esperar() {
+    hora += 3
+    let frase = Math.ceil(Math.random() * frasesDeEspera.length - 1);
+    alert(frasesDeEspera[frase])
+    }
 
 // Función de la acción inventario .
 
 
 function inventario() {
     if (mochila.length === 0) {
-        alert("Tu mochila esta vacía sal a recolectar para juntar cosas")
+        alert("Tu mochila esta vacía. Sal a recolectar a ver qué puedes encontrar.")
 
     } else {
         mochila.sort()
-        alert("Esto hay en tu mochila  " + mochila)
+        alert("Esto hay en tu mochila:  " + mochila)
 
     }
 }
@@ -125,10 +140,10 @@ function recolectar() {
         }
         recoleccion.sort()
         alert("Recolectaste esto: " + recoleccion)
-        alert("Se agregaron a tu mochila")
+        alert("Se agregaron a tu mochila.")
 
     } else {
-        alert("Es de noche no puedes recolectar");
+        alert("Es de noche, no puedes recolectar.");
 
     }
 }
@@ -141,20 +156,22 @@ function estadoSalud() {
     alert("Tu nivel de hambre es: " + hambre)
 }
 
-alert("Este juego utiliza el modelo de procesamiento gráfico mas potente del mercado...")
+alert("Este juego utiliza el modelo de procesamiento gráfico más potente del mercado...")
 alert("Tu imaginación")
-alert(` -----Despiertas en un bosque, tienes un gran
+alert(` ---------------------------------------------------
+        Despiertas en un bosque, tienes un gran
         dolor de cabeza y no recuerdas nada, absolutamente nada.
-        En el suelo a pocos metros de ti hay una mochila, la agarras,
+        En el suelo, a pocos metros de ti, hay una mochila. La agarras,
         tiene un buzo de lana que en la etiqueta dice Javier y
-        un reloj que funciona pero tiene la correa rota`)
+        un reloj que funciona pero tiene la correa rota.
+        ----------------------------------------------------`)
 
 while (salud > 0) {
 
     
     if (hambre < 10) {
         salud--
-        alert("tienes hambre tu salud esta bajando. Salud: " + salud)
+        alert("Tienes hambre, tu salud está bajando. Salud: " + salud)
     }
 
     // Cada 24 horas se suma un dia 
@@ -173,10 +190,17 @@ while (salud > 0) {
     }
     
 
-    alert("que quieres hacer?")
-    alert("son las " + hora + " horas del dia " + dias)
-    let sAction = prompt("1-Comer 2-Dormir 3-Ver mochila 4-Recolectar 5-Estado de salud")
-    if (sAction >= 1 && sAction <= 5) {
+    alert("==Qué quieres hacer?")
+    alert("Son las: " + hora + " horas del día " + dias)
+    let sAction = prompt(`-----------------
+    1-Comer
+    2-Dormir
+    3-Ver mochila
+    4-Recolectar
+    5-Estado de salud
+    6-Esperar
+    -----------------`)
+    if (sAction >= 1 && sAction <= 6) {
         if (sAction == "1") {
             comer();
         } else if (sAction == 2) {
@@ -187,10 +211,12 @@ while (salud > 0) {
             recolectar()
         } else if (sAction == 5) {
             estadoSalud()
+        }else if (sAction == 6) {
+            esperar()
         }
     } else {
-        alert("Opción invalida, intente nuevamente")
+        alert("Opción inválida, intente nuevamente")
     }
 
 }
-alert("Has muerto")
+alert("Has muerto.")
