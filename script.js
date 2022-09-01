@@ -254,7 +254,7 @@ while (salud > 0) {
 
 }
 if(salud <= 0){
-    alert("Has muerto.")
+    alert("Has muerto, Game Over")
 }
 else{
     alert("Gracias por jugar")
