@@ -6,36 +6,54 @@ let cansancio = 10
 
 // Variables de dia y hora cada actividad lleva determinada cantidad de horas y se van sumando.
 
-let hora = 9
+let hora = 22
 let dias = 0
 
+// Objetos del juego.
 
+
+const antorcha = {
+    nombre: "Antorcha",
+    peso: 1            
+}
+
+const hoja = {
+    nombre: "Hoja",
+    peso: 1
+}
 const palo = {
-    nombre:"palo",
-    peso:1
+    nombre: "Palo",
+    peso: 1
 }
 const buzo = {
-    nombre:"Buzo de lana",
-    peso:2
+    nombre: "Buzo de lana",
+    peso: 2
 }
 const reloj = {
-    nombre:"Reloj",
-    peso:1
+    nombre: "Reloj",
+    peso: 1
 }
 const fruta = {
-    nombre:"Fruta Silvestre",
-    peso:1,
-    valNut:5
+    nombre: "Fruta Silvestre",
+    peso: 1,
+    valNut: 15,
+    moral: 10
+}
+const gusano = {
+    nombre: "Gusano",
+    peso: 1,
+    valNut: 2,
+    moral: -10
 }
 
 
 // Arreglo de la mochila del jugador.
 
-const mochila = [buzo,reloj]
+const mochila = [buzo, reloj, palo, hoja, hoja]
 
 // Arreglo de los objetos que hay en el juego.
 
-const objetos = [palo,buzo,fruta,reloj]
+const objetos = [palo, fruta, gusano, hoja]
 
 // Arreglo usado para la recolección y esta formado por 
 // los elemento que se recolectan en cada iteración.
@@ -57,7 +75,7 @@ function comer() {
     if (hambre < 20) {
         alert("No puedes comer, no tienes hambre")
 
-        // Con el método includes verifico si Frutas Silvestres que es
+        // Con el método some verifico si Frutas Silvestres que es
         //  el único alimento por el momento esta en mi arreglo mochila
 
     } else if (mochila.some(alimento => alimento.nombre == "Fruta Silvestre") === true) {
@@ -132,6 +150,7 @@ function inventario() {
         alert("Tu mochila esta vacía. Sal a recolectar a ver qué puedes encontrar.")
 
     } else {
+
         mochila.sort()
         let nombresMochila = mochila.map((element) => element.nombre)
         alert(nombresMochila)
@@ -144,7 +163,7 @@ function recolectar() {
 
     // Solo se puede recolectar si es de dia
 
-    if (hora > 6 && hora < 19) {
+    if (hora > 6 && hora < 19 || mochila.some(element => element.nombre == "Antorcha") === true) {
         cansancio += 30
         hambre += 10
         hora += 4
@@ -162,14 +181,62 @@ function recolectar() {
             mochila.push(objetos[chance])
             recoleccion.push(objetos[chance])
         }
+
+        
         recoleccion.sort()
         let nombresRecoleccion = recoleccion.map((element) => element.nombre)
         alert("Recolectaste esto: " + nombresRecoleccion)
         alert("Se agregaron a tu mochila.")
-        } else {
+    } else {
         alert("Es de noche, no puedes recolectar.");
 
     }
+}
+
+
+
+function fabricar() {
+    
+    let palos = mochila.filter(element => element == palo)
+    let hojas = mochila.filter(element => element == hoja)
+
+    if (palos.length >= 1 && hojas.length >= 2){
+        alert("Puedes fabricar una antorcha para poder recolectar en la noche")
+        alert("PALO X1 HOJA X2")
+       let fAction = prompt("Fabricar antorcha? 1-Si 2-No")
+       
+       if (fAction == 1){
+        alert("fabricaste una antorcha")
+        
+        mochila.push(antorcha)
+        const hFiltrados = mochila.filter(element => element != hoja)
+        const hNoFiltrados = mochila.filter(element => element == hoja)
+        const pFiltrados = mochila.filter(element => element != palo)
+        const phNoFiltrados = mochila.filter(element => element == palo)
+
+        // Vació el arreglo mochila
+
+        mochila.length = 0;
+
+        // Pongo los elementos del arreglo filtrados dentro de arreglo mochila
+
+        Array.prototype.push.apply(mochila, hFiltrados, pFiltrados);
+
+        for (let index = 0; index < hNoFiltrados.length - 2; index++) {
+            mochila.push(hoja)
+        }
+        for (let index = 0; index < phNoFiltrados.length - 1; index++) {
+            mochila.push(palo)
+        }
+       }
+       else if (fAction == 2){
+
+       }
+    }
+    else{
+        alert("No tienes materiales suficientes para fabricar nada")
+    }
+        
 }
 
 // Función de la acción estado de salud .
@@ -196,10 +263,10 @@ while (salud > 0) {
 
 
     if (hambre > 100) {
-        salud-=10
+        salud -= 10
         alert("Tienes hambre, tu salud está bajando. Salud: " + salud)
     }
-    if(cansancio > 100){
+    if (cansancio > 100) {
         alert("Tienes mucho sueño te quedas dormido")
         dormir()
     }
@@ -227,11 +294,12 @@ while (salud > 0) {
     2-Dormir.
     3-Ver mochila.
     4-Recolectar.
-    5-Estado de salud.
+    5-Fabricar.
     6-Esperar.
-    7-Salir del juego.
+    7-Estado de salud.
+    8-Salir del juego.
     -----------------`)
-    if (sAction >= 1 && sAction <= 7) {
+    if (sAction >= 1 && sAction <= 8) {
         if (sAction == 1) {
             comer();
         } else if (sAction == 2) {
@@ -241,10 +309,12 @@ while (salud > 0) {
         } else if (sAction == 4) {
             recolectar()
         } else if (sAction == 5) {
-            estadoSalud()
+            fabricar()
         } else if (sAction == 6) {
             esperar()
         } else if (sAction == 7) {
+            estadoSalud()
+        } else if (sAction == 8) {
             break;
         }
 
@@ -253,9 +323,8 @@ while (salud > 0) {
     }
 
 }
-if(salud <= 0){
+if (salud <= 0) {
     alert("Has muerto, Game Over")
-}
-else{
+} else {
     alert("Gracias por jugar")
 }
