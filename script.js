@@ -9,13 +9,33 @@ let cansancio = 10
 let hora = 9
 let dias = 0
 
+
+const palo = {
+    nombre:"palo",
+    peso:1
+}
+const buzo = {
+    nombre:"Buzo de lana",
+    peso:2
+}
+const reloj = {
+    nombre:"Reloj",
+    peso:1
+}
+const fruta = {
+    nombre:"Fruta Silvestre",
+    peso:1,
+    valNut:5
+}
+
+
 // Arreglo de la mochila del jugador.
 
-const mochila = ["Buzo de lana", "Reloj"]
+const mochila = [buzo,reloj]
 
 // Arreglo de los objetos que hay en el juego.
 
-const objetos = ["Palo", "Frutas Silvestres", "Piedra", "Hoja de Palmera"]
+const objetos = [palo,buzo,fruta,reloj]
 
 // Arreglo usado para la recolección y esta formado por 
 // los elemento que se recolectan en cada iteración.
@@ -40,8 +60,8 @@ function comer() {
         // Con el método includes verifico si Frutas Silvestres que es
         //  el único alimento por el momento esta en mi arreglo mochila
 
-    } else if (mochila.includes("Frutas Silvestres") === true) {
-        hambre -= 5
+    } else if (mochila.some(alimento => alimento.nombre == "Fruta Silvestre") === true) {
+        hambre -= fruta.valNut
         cansancio += 20
         hora += 1
 
@@ -51,8 +71,8 @@ function comer() {
         // 1-filtro todo los elementos que no son fruta y creo el arreglo filtrados
         // 2-filtro todos los elemento fruta en el arreglo no filtrados
 
-        const filtrados = mochila.filter(element => element != "Frutas Silvestres")
-        const noFiltrados = mochila.filter(element => element == "Frutas Silvestres")
+        const filtrados = mochila.filter(element => element != fruta)
+        const noFiltrados = mochila.filter(element => element == fruta)
 
         // Vació el arreglo mochila
 
@@ -113,8 +133,8 @@ function inventario() {
 
     } else {
         mochila.sort()
-        alert("Esto hay en tu mochila:  " + mochila)
-
+        let nombresMochila = mochila.map((element) => element.nombre)
+        alert(nombresMochila)
     }
 }
 
@@ -143,10 +163,10 @@ function recolectar() {
             recoleccion.push(objetos[chance])
         }
         recoleccion.sort()
-        alert("Recolectaste esto: " + recoleccion)
+        let nombresRecoleccion = recoleccion.map((element) => element.nombre)
+        alert("Recolectaste esto: " + nombresRecoleccion)
         alert("Se agregaron a tu mochila.")
-
-    } else {
+        } else {
         alert("Es de noche, no puedes recolectar.");
 
     }
@@ -159,7 +179,8 @@ function estadoSalud() {
     alert("Tu nivel de cansancio es: " + cansancio)
     alert("Tu nivel de hambre es: " + hambre)
 }
-
+// alert (mochila.some(alimento => alimento.nombre == "Fruta Silvestre"))
+// alert (mochila)
 
 alert("Este juego utiliza el modelo de procesamiento gráfico más potente del mercado...")
 alert("Tu imaginación")
