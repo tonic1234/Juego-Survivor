@@ -1,0 +1,214 @@
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,600;0,700;1,500&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Urbanist", sans-serif;
+  background-color: rgb(238, 238, 238);
+}
+body .gameBox {
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  border-radius: 20px;
+  width: 414px;
+  height: 900px;
+  box-shadow: 1px 2px 5px rgb(200, 200, 200);
+}
+body .gameBox header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 20px;
+}
+body .gameBox header .headerMenuIconBox {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin-right: 20px;
+  width: 100%;
+}
+body .gameBox header .headerMenuIconBox img {
+  width: 30%;
+}
+body .gameBox header .headerCampUpGradesBox {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 5px;
+}
+body .gameBox header .headerCampUpGradesBox img {
+  width: 30px;
+}
+body .gameBox header .headerClockBox {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+body .gameBox header .headerClockBox p {
+  font-weight: bold;
+  font-size: 14pt;
+  line-height: 18px;
+}
+body .gameBox header .headerClockBox img {
+  width: 25%;
+  margin-right: 10px;
+}
+body .campStatusBox {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  margin-bottom: 10px;
+  height: 195px;
+  overflow: hidden;
+}
+body .campStatusBox .sky {
+  position: absolute;
+  height: 280px;
+  width: 280px;
+  background: linear-gradient(0deg, rgb(255, 255, 255) 0%, rgb(87, 157, 255) 100%);
+  border-radius: 200px;
+}
+body .campStatusBox .camping {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  z-index: 3;
+  margin-top: 8px;
+  background-image: url(../imagenes/campingnoche.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  transition: all 2s;
+}
+body .campStatusBox .camping img {
+  width: 300px;
+}
+body .campStatusBox .sunMoon {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  overflow: hidden;
+  z-index: 2;
+}
+body .campStatusBox .sunMoon .sunMoonImg {
+  width: 50%;
+  margin-top: 60px;
+  transform: rotate(0deg);
+  transition: 4s all;
+}
+body .playerStatusBox {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-left: 10px;
+}
+body .playerStatusBox .playerStatus {
+  display: flex;
+  height: 40px;
+  width: 100%;
+}
+body .playerStatusBox .playerStatus .statusBarHealth, body .playerStatusBox .playerStatus .statusBarFatigue, body .playerStatusBox .playerStatus .statusBarHunger, body .playerStatusBox .playerStatus .statusBarThirst, body .playerStatusBox .playerStatus .statusBarMood {
+  display: flex;
+  align-items: center;
+  margin-left: 5px;
+  border-radius: 4px;
+  transition: all 1s;
+}
+body .playerStatusBox .playerStatus .statusBarHealth p, body .playerStatusBox .playerStatus .statusBarFatigue p, body .playerStatusBox .playerStatus .statusBarHunger p, body .playerStatusBox .playerStatus .statusBarThirst p, body .playerStatusBox .playerStatus .statusBarMood p {
+  color: white;
+  font-size: 14pt;
+  font-weight: bolder;
+  margin-left: 10px;
+  letter-spacing: 5px;
+}
+body .playerStatusBox .playerStatus .statusBarHealth {
+  background-color: #B33030;
+  width: 0px;
+}
+body .playerStatusBox .playerStatus .statusBarFatigue {
+  background-color: #3F4E4F;
+  width: 0px;
+}
+body .playerStatusBox .playerStatus .statusBarHunger {
+  background-color: #4E944F;
+  width: 0px;
+}
+body .playerStatusBox .playerStatus .statusBarThirst {
+  background-color: #4B778D;
+  width: 330px;
+}
+body .playerStatusBox .playerStatus .statusBarMood {
+  background-color: #ffa322;
+  width: 330px;
+}
+body .playerStatusBox .playerStatus .StatusIcon img {
+  width: 40px;
+}
+body .backPackBox {
+  display: flex;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+body .backPackBox .playerBackPack {
+  display: flex;
+  height: 40px;
+  width: 100%;
+}
+body .backPackBox .playerBackPack .backPackContainers {
+  gap: 2px;
+  display: flex;
+  margin-left: 3px;
+}
+body .backPackBox .playerBackPack .backPackContainers .backPackContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: rgb(220, 220, 220);
+  width: 40px;
+  height: 40px;
+  transition: all 1s;
+}
+body .backPackBox .playerBackPack .backPackContainers .backPackContainer:hover {
+  box-shadow: 0px 0px 2px 1px gray;
+}
+body .backPackBox .playerBackPack .backPackContainers .backPackContainer img {
+  width: 90%;
+}
+body .backPackBox .playerBackPack .backPackIcon img {
+  width: 40px;
+}
+body .actionsBox {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+body .actionsBox .actionButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  align-items: center;
+  background-color: rgb(237, 237, 237);
+  border-radius: 5px;
+  font-weight: bold;
+}
+body .actionsBox .actionButton .actionButtonTitle {
+  font-size: 12pt;
+}
+body .actionsBox .actionButton .actionDescription {
+  font-size: 10pt;
+}/*# sourceMappingURL=styles.css.map */

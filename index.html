@@ -1,13 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Lost Boy Game Alfa</title>
 </head>
+
 <body>
-    
+   
+    <div class="gameBox">
+        <header>
+            <div class="headerClockBox"><img src="./imagenes/reloj.png" alt="">
+                <div><p class="timeText"></p><p class="dayText"></p></div>
+                
+            </div>
+            <div class="headerCampUpGradesBox"><img src="./imagenes/fuego.png" alt=""><img src="./imagenes/recolector de agua.png" alt=""><img src="./imagenes/antorcha.png" alt=""> </div>
+            <div class="headerMenuIconBox"><img src="./imagenes/menu.png" alt=""></div>
+        </header>
+        <main>
+            <div class="campStatusBox">
+                <div class="camping"></div>
+                <div class="sunMoon"><img class="sunMoonImg" src="./imagenes/solluna.png" alt=""></div>
+                <div class="sky"></div>
+            </div>
+            <div class="playerStatusBox">
+
+                <div class="playerStatus">
+                    <div class="StatusIcon">
+                        <img src="./imagenes/salud.png" alt="">
+                    </div>
+                    <div class="statusBarHealth">
+                        <p>SALUD</p>
+                    </div>
+                </div>
+
+                <div class="playerStatus">
+                    <div class="StatusIcon">
+                        <img src="./imagenes/cansancio.png" alt="">
+                    </div>
+                    <div class="statusBarFatigue">
+                        <p>CANSANCIO</p>
+                    </div>
+                </div>
+
+                <div class="playerStatus">
+                    <div class="StatusIcon">
+                        <img src="./imagenes/hambre.png" alt="">
+                    </div>
+                    <div class="statusBarHunger">
+                        <p>HAMBRE</p>
+                    </div>
+                </div>
+
+                <div class="playerStatus">
+                    <div class="StatusIcon">
+                        <img src="./imagenes/sed.png" alt="">
+                    </div>
+                    <div class="statusBarThirst">
+                        <p>SED</p>
+                    </div>
+                </div>
+
+                <div class="playerStatus">
+                    <div class="StatusIcon">
+                        <img src="./imagenes/moral.png" alt="">
+                    </div>
+                    <div class="statusBarMood">
+                        <p>MORAL</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="backPackBox">
+                <div class="playerBackPack">
+                    <div class="backPackIcon">
+                        <img src="./imagenes/mochila.png" alt="">
+                    </div>
+                    <div class="backPackContainers">
+                        <div class="backPackContainer"><img src="./imagenes/palo.png" alt=""></div>
+                        <div class="backPackContainer"><img src="./imagenes/piedra.png" alt=""></div>
+                        <div class="backPackContainer"><img src="./imagenes/hoja.png" alt=""></div>
+                        <div class="backPackContainer"><img src="./imagenes/fruta.png" alt=""></div>
+                        <div class="backPackContainer"><img src="./imagenes/gusano.png" alt=""></div>
+                        <div class="backPackContainer"><img src="./imagenes/pajaro.png" alt=""></div>
+                        <div class="backPackContainer"><img src="./imagenes/pajarococinado.png" alt=""></div>
+                        <div class="backPackContainer"><img src="./imagenes/botella.png" alt=""></div>
+                    </div>
+                </div>
+            </div>
+            <div class="actionsBox">
+                <div class="actionButton" id="comerButton">
+                    <p class="actionButtonTitle">Comer</p>
+                    <p class="actionDescription">Hambre:-5 Sed:+10 Cansancio:+20 Moral:+20 Tiempo:1 hora</p>
+                </div>
+                <div class="actionButton" id="aguaButton">
+                    <p class="actionButtonTitle">Tomar Agua</p>
+                    <p class="actionDescription">Hambre:-5 Sed:-10, Cansancio:-5, Moral:+10, Tiempo: 1 hora</p>
+                </div>
+                <div class="actionButton" id="dormirButton">
+                    <p class="actionButtonTitle">Dormir</p>
+                    <p class="actionDescription">Hambre:+20, Cansancio:-20, Moral: +10, Tiempo: 6 horas</p>
+                </div>
+                <div class="actionButton" id="recolectarButton">
+                    <p class="actionButtonTitle">Recolectar</p>
+                    <p class="actionDescription">Hambre:+25, Cansancio:+40, Moral: -10, Tiempo: 2 horas</p>
+                </div>
+                <div class="actionButton" id="fabricarButton">
+                    <p class="actionButtonTitle">Fabricar</p>
+                    <p class="actionDescription">Hambre:+15, Cansancio:+30, Moral: +30, Tiempo: 2 horas</p>
+                </div>
+                <div class="actionButton" id="esperarButton">
+                    <p class="actionButtonTitle">Esperar</p>
+                    <p class="actionDescription">Hambre:+20, Cansancio:+20, Moral: -20, Tiempo: 3 horas</p>
+                </div>
+            </div>
+        </main>
+    </div>
     <script src="script.js"></script>
 </body>
+
 </html>
