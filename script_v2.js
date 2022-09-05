@@ -14,7 +14,6 @@ const esperarB = document.querySelector("#esperarButton")
 const antorcha = {
     nombre: "Antorcha",
     
-    
 }
 
 const hoja = {
@@ -23,7 +22,7 @@ const hoja = {
 }
 const palo = {
     nombre: "Palo",
-    imagen: <img src="./imagenes/palo.png" alt=""></img>
+    
 }
 const piedra = {
     nombre: "Piedra",
@@ -54,7 +53,7 @@ const carnePajaro = {
 
 // Arreglo de la mochila del jugador.
 
-const mochila = [buzo, reloj, hoja, hoja, fruta, fruta, fruta]
+const mochila = [ hoja, hoja, fruta, fruta, fruta]
 
 // Arreglo de los objetos que hay en el juego.
 
@@ -88,6 +87,25 @@ let hora = 16
 let dias = 0
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>FUNCIONES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
+function state() {
+
+    if (salud <= 0) {
+        alert("Game Over")
+    }
+
+    if (hambre > 100) {
+        salud -= 10
+    }
+
+    if (cansancio > 100) {
+        alert("Estas muy cansado te quedaste dormido")
+        dormir()
+
+    }
+}
+
 
 // Función del reloj
 
@@ -208,11 +226,12 @@ function comer() {
         for (let index = 0; index < noFiltrados.length - 1; index++) {
             mochila.push(fruta)
         }
+        clock()
+        state()
         statusBar(".statusBarHealth", salud)
         statusBar(".statusBarFatigue", cansancio)
         statusBar(".statusBarHunger", hambre)
         dayNight()
-        clock()
         camping()
         sunMoon()
 
@@ -232,10 +251,11 @@ function dormir() {
         cansancio -= 30
         hambre += 20
         hora += 6
+        clock()
+        state()
         statusBar(".statusBarHealth", salud)
         statusBar(".statusBarFatigue", cansancio)
         statusBar(".statusBarHunger", hambre)
-        clock()
         dayNight()
         camping()
         sunMoon()
@@ -252,10 +272,11 @@ function esperar() {
     hambre += 20
     // let frase = Math.ceil(Math.random() * frasesDeEspera.length - 1);
     // alert(frasesDeEspera[frase])
+    clock()
+    state()
     statusBar(".statusBarHealth", salud)
     statusBar(".statusBarFatigue", cansancio)
     statusBar(".statusBarHunger", hambre)
-    clock()
     dayNight()
     camping()
     sunMoon()
@@ -309,13 +330,14 @@ function recolectar() {
         // alert("Recolectaste esto: " + nombresRecoleccion)
         // alert("Se agregaron a tu mochila.")
 
+        clock()
+        state()
         statusBar(".statusBarHealth", salud)
         statusBar(".statusBarFatigue", cansancio)
         statusBar(".statusBarHunger", hambre)
         dayNight()
         camping()
         sunMoon()
-        clock()
 
     } else {
         alert("Es de noche, no puedes recolectar.");
@@ -398,22 +420,6 @@ camping()
 sunMoon()
 
 
-function state() {
-
-    if (salud <= 0) {
-        alert("Game Over")
-    }
-
-    if (hambre > 100) {
-        salud -= 10
-    }
-
-    if (cansancio > 100) {
-        alert("Estas muy cansado te quedaste dormido")
-        dormir()
-
-    }
-}
 
 
 
