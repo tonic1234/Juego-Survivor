@@ -10,14 +10,18 @@
 </head>
 
 <body>
-   
+
     <div class="gameBox">
         <header>
             <div class="headerClockBox"><img src="./imagenes/reloj.png" alt="">
-                <div><p class="timeText"></p><p class="dayText"></p></div>
-                
+                <div>
+                    <p class="timeText"></p>
+                    <p class="dayText"></p>
+                </div>
+
             </div>
-            <div class="headerCampUpGradesBox"><img src="./imagenes/fuego.png" alt=""><img src="./imagenes/recolector de agua.png" alt=""><img src="./imagenes/antorcha.png" alt=""> </div>
+            <div class="headerCampUpGradesBox"><img src="./imagenes/fuego.png" alt=""><img
+                    src="./imagenes/recolector de agua.png" alt=""><img src="./imagenes/antorcha.png" alt=""> </div>
             <div class="headerMenuIconBox"><img src="./imagenes/menu.png" alt=""></div>
         </header>
         <main>
@@ -69,7 +73,7 @@
                         <img src="./imagenes/moral.png" alt="">
                     </div>
                     <div class="statusBarMood">
-                        <p>MORAL</p>
+                        <p>ANIMO</p>
                     </div>
                 </div>
 
@@ -80,40 +84,43 @@
                         <img src="./imagenes/mochila.png" alt="">
                     </div>
                     <div class="backPackContainers">
-                        <div class="backPackContainer"></div>
-                        <div class="backPackContainer"></div>
-                        <div class="backPackContainer"></div>
-                        <div class="backPackContainer"></div>
-                        <div class="backPackContainer"></div>
-                        <div class="backPackContainer"></div>
-                        <div class="backPackContainer"></div>
-                        <div class="backPackContainer"></div>
+                        
+                            <div class="backPackContainer"><div class="backPackimg"></div></div>
+                            <div class="backPackContainer"></div>
+                            <div class="backPackContainer"></div>
+                            <div class="backPackContainer"></div>
+                            <div class="backPackContainer"></div>
+                            <div class="backPackContainer"></div>
+                            <div class="backPackContainer"></div>
+                            <div class="backPackContainer"></div>
+                        
                     </div>
-                </div>            </div>
+                </div>
+            </div>
             <div class="actionsBox">
-                <div class="actionButton" id="comerButton" >
+                <div class="actionButton" id="comerButton">
                     <p class="actionButtonTitle">Comer</p>
-                    <p class="actionDescription">Hambre:-5 Sed:+10 Cansancio:+20 Moral:+20 Tiempo:1 hora</p>
+                    <p class="actionDescription">Hambre:-5 Sed:+20 Cansancio:+20 Moral:+10 Tiempo:1 hora</p>
                 </div>
                 <div class="actionButton" id="aguaButton">
                     <p class="actionButtonTitle">Tomar Agua</p>
-                    <p class="actionDescription">Hambre:-5 Sed:-10, Cansancio:-5, Moral:+10, Tiempo: 1 hora</p>
+                    <p class="actionDescription">Hambre:-5 Sed:-30, Cansancio:-10, Moral:+10, Tiempo: 1 hora</p>
                 </div>
                 <div class="actionButton" id="dormirButton">
                     <p class="actionButtonTitle">Dormir</p>
-                    <p class="actionDescription">Hambre:+20, Cansancio:-20, Moral: +10, Tiempo: 6 horas</p>
+                    <p class="actionDescription">Hambre:+20, Sed:+20, Cansancio:-40, Moral: +5, Tiempo: 5 horas</p>
                 </div>
                 <div class="actionButton" id="recolectarButton">
                     <p class="actionButtonTitle">Recolectar</p>
-                    <p class="actionDescription">Hambre:+25, Cansancio:+40, Moral: -10, Tiempo: 2 horas</p>
+                    <p class="actionDescription">Hambre:+25, Cansancio:+40, Moral:(de +1 a +3), Tiempo: 2 horas</p>
                 </div>
                 <div class="actionButton" id="fabricarButton">
                     <p class="actionButtonTitle">Fabricar</p>
-                    <p class="actionDescription">Hambre:+15, Cansancio:+30, Moral: +30, Tiempo: 2 horas</p>
+                    <p class="actionDescription">Hambre:+20, Sed:+30, Cansancio:+30, Moral: +20, Tiempo: 2 horas</p>
                 </div>
                 <div class="actionButton" id="esperarButton">
                     <p class="actionButtonTitle">Esperar</p>
-                    <p class="actionDescription">Hambre:+20, Cansancio:+20, Moral: -20, Tiempo: 3 horas</p>
+                    <p class="actionDescription">Hambre:+20, Sed:+10 Cansancio:+10, Moral: -20, Tiempo: 3 horas</p>
                 </div>
             </div>
         </main>
