@@ -1,9 +1,9 @@
-// const comerB = document.querySelector("#comerButton")
-// const tomarB = document.querySelector("#aguaButton")
-// const dormirB = document.querySelector("#dormirButton")
-// const recolectarB = document.querySelector("#recolectarButton")
-// const fabricarB = document.querySelector("#fabricarButton")
-// const esperarB = document.querySelector("#fabricarButton")
+const comerB = document.querySelector("#comerButton")
+const tomarB = document.querySelector("#aguaButton")
+const dormirB = document.querySelector("#dormirButton")
+const recolectarB = document.querySelector("#recolectarButton")
+const fabricarB = document.querySelector("#fabricarButton")
+const esperarB = document.querySelector("#fabricarButton")
 
 
 // Stats del personaje
@@ -386,32 +386,42 @@ while (salud > 0) {
       });
 
 
+
+
+
+
+
+
+
+
+
+
     // if (sAction >= 1 && sAction <= 8) {
-        if (sAction == 1) {
-            comer();
-        } else if (sAction == 2) {
-            dormir();
-        } else if (sAction == 3) {
-            inventario();
-        } else if (sAction == 4) {
-            recolectar()
-        } else if (sAction == 5) {
-            fabricar()
-        } else if (sAction == 6) {
-            esperar()
-        } else if (sAction == 7) {
-            estadoSalud()
-        } else if (sAction == 8) {
-            break;
+        // if (sAction == 1) {
+        //     comer();
+        // } else if (sAction == 2) {
+        //     dormir();
+        // } else if (sAction == 3) {
+        //     inventario();
+        // } else if (sAction == 4) {
+        //     recolectar()
+        // } else if (sAction == 5) {
+        //     fabricar()
+        // } else if (sAction == 6) {
+        //     esperar()
+        // } else if (sAction == 7) {
+        //     estadoSalud()
+        // } else if (sAction == 8) {
+        //     break;
         // }
 
-    } else {
-        alert("Opción inválida, intente nuevamente")
-    }
+//     } else {
+//         alert("Opción inválida, intente nuevamente")
+//     }
 
-}
-if (salud <= 0) {
-    alert("Has muerto, Game Over")
-} else {
-    alert("Gracias por jugar")
-}
+// }
+// if (salud <= 0) {
+//     alert("Has muerto, Game Over")
+// } else {
+//     alert("Gracias por jugar")
+// }
