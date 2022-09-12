@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,600;0,700;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,600;0,700;0,800;1,500&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -11,8 +11,214 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
+  background-image: url(../imagenes/leaves.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
   font-family: "Urbanist", sans-serif;
-  background-color: rgb(238, 238, 238);
+  transition: all 5s;
+}
+@keyframes introAnimation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+body .loseBox {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 6;
+  background-color: #111313;
+  transition: 5s all;
+  animation-name: introAnimation;
+  animation-duration: 5s;
+}
+body .loseBox button {
+  background-color: white;
+  color: black;
+  width: 155px;
+  height: 50px;
+  border-radius: 10px;
+  margin-top: 30px;
+  font-family: "Urbanist", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+body .loseBox h2 {
+  color: white;
+  font-size: 52pt;
+  text-align: center;
+}
+body .messageBox {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.965);
+  padding: 5px;
+  border-radius: 20px;
+  width: 590px;
+  height: auto;
+  transition: all 5s;
+  z-index: 7;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+  border: 1px solid rgb(226, 226, 226);
+  backdrop-filter: blur(1px);
+  animation-name: introAnimation;
+  animation-duration: 0.5s;
+}
+body .messageBox p {
+  font-size: 16pt;
+  font-weight: bold;
+  color: #3F4E4F;
+  margin-bottom: 30px;
+  text-align: center;
+}
+body .messageBox .closeDiv {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+body .messageBox .closeDiv img {
+  width: 30px;
+  text-align: right;
+  cursor: pointer;
+}
+body .craftingBox,
+body .recollectBox {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.965);
+  padding: 5px;
+  border-radius: 20px;
+  width: 590px;
+  height: auto;
+  transition: all 5s;
+  z-index: 7;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+  border: 1px solid rgb(226, 226, 226);
+  backdrop-filter: blur(1px);
+  animation-name: introAnimation;
+  animation-duration: 0.5s;
+}
+body .craftingBox .closeDiv,
+body .recollectBox .closeDiv {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+body .craftingBox .closeDiv img,
+body .recollectBox .closeDiv img {
+  width: 30px;
+  text-align: right;
+  cursor: pointer;
+}
+body .craftingBox .craftItems,
+body .craftingBox .recollectItems,
+body .recollectBox .craftItems,
+body .recollectBox .recollectItems {
+  display: flex;
+  gap: 10px;
+}
+body .craftingBox .craftItems .antorchaButton,
+body .craftingBox .craftItems .recolectorButton,
+body .craftingBox .craftItems .fogataButton,
+body .craftingBox .craftItems .recollectOne,
+body .craftingBox .craftItems .recollectTwo,
+body .craftingBox .craftItems .recollectThree,
+body .craftingBox .recollectItems .antorchaButton,
+body .craftingBox .recollectItems .recolectorButton,
+body .craftingBox .recollectItems .fogataButton,
+body .craftingBox .recollectItems .recollectOne,
+body .craftingBox .recollectItems .recollectTwo,
+body .craftingBox .recollectItems .recollectThree,
+body .recollectBox .craftItems .antorchaButton,
+body .recollectBox .craftItems .recolectorButton,
+body .recollectBox .craftItems .fogataButton,
+body .recollectBox .craftItems .recollectOne,
+body .recollectBox .craftItems .recollectTwo,
+body .recollectBox .craftItems .recollectThree,
+body .recollectBox .recollectItems .antorchaButton,
+body .recollectBox .recollectItems .recolectorButton,
+body .recollectBox .recollectItems .fogataButton,
+body .recollectBox .recollectItems .recollectOne,
+body .recollectBox .recollectItems .recollectTwo,
+body .recollectBox .recollectItems .recollectThree {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 180px;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.203);
+  background-color: rgb(237, 237, 237);
+  margin-bottom: 20px;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+body .craftingBox .craftItems .antorchaButton img,
+body .craftingBox .craftItems .recolectorButton img,
+body .craftingBox .craftItems .fogataButton img,
+body .craftingBox .craftItems .recollectOne img,
+body .craftingBox .craftItems .recollectTwo img,
+body .craftingBox .craftItems .recollectThree img,
+body .craftingBox .recollectItems .antorchaButton img,
+body .craftingBox .recollectItems .recolectorButton img,
+body .craftingBox .recollectItems .fogataButton img,
+body .craftingBox .recollectItems .recollectOne img,
+body .craftingBox .recollectItems .recollectTwo img,
+body .craftingBox .recollectItems .recollectThree img,
+body .recollectBox .craftItems .antorchaButton img,
+body .recollectBox .craftItems .recolectorButton img,
+body .recollectBox .craftItems .fogataButton img,
+body .recollectBox .craftItems .recollectOne img,
+body .recollectBox .craftItems .recollectTwo img,
+body .recollectBox .craftItems .recollectThree img,
+body .recollectBox .recollectItems .antorchaButton img,
+body .recollectBox .recollectItems .recolectorButton img,
+body .recollectBox .recollectItems .fogataButton img,
+body .recollectBox .recollectItems .recollectOne img,
+body .recollectBox .recollectItems .recollectTwo img,
+body .recollectBox .recollectItems .recollectThree img {
+  width: 80%;
+  margin-bottom: 10px;
+}
+body .craftingBox .craftItems .antorchaButton,
+body .craftingBox .recollectItems .antorchaButton,
+body .recollectBox .craftItems .antorchaButton,
+body .recollectBox .recollectItems .antorchaButton {
+  opacity: 30%;
+  filter: grayscale(100%);
+}
+body .craftingBox .craftItems .recolectorButton,
+body .craftingBox .recollectItems .recolectorButton,
+body .recollectBox .craftItems .recolectorButton,
+body .recollectBox .recollectItems .recolectorButton {
+  opacity: 30%;
+  filter: grayscale(100%);
+}
+body .craftingBox .craftItems .fogataButton,
+body .craftingBox .recollectItems .fogataButton,
+body .recollectBox .craftItems .fogataButton,
+body .recollectBox .recollectItems .fogataButton {
+  opacity: 30%;
+  filter: grayscale(100%);
 }
 body .gameBox {
   background-color: rgb(255, 255, 255);
@@ -20,7 +226,7 @@ body .gameBox {
   border-radius: 20px;
   width: 414px;
   height: 900px;
-  box-shadow: 1px 2px 5px rgb(200, 200, 200);
+  transition: all 4s;
 }
 body .gameBox header {
   display: flex;
@@ -45,6 +251,15 @@ body .gameBox header .headerCampUpGradesBox {
   align-items: center;
   gap: 5px;
 }
+body .gameBox header .headerCampUpGradesBox .upgradeIconAntorcha {
+  visibility: visible;
+}
+body .gameBox header .headerCampUpGradesBox .upgradeIconRecolector {
+  visibility: hidden;
+}
+body .gameBox header .headerCampUpGradesBox .upgradeIconFogata {
+  visibility: hidden;
+}
 body .gameBox header .headerCampUpGradesBox img {
   width: 30px;
 }
@@ -60,7 +275,6 @@ body .gameBox header .headerClockBox p {
 }
 body .gameBox header .headerClockBox img {
   width: 25%;
-  margin-right: 10px;
 }
 body .campStatusBox {
   display: flex;
@@ -85,6 +299,7 @@ body .campStatusBox .camping {
   width: 100%;
   height: 200px;
   display: flex;
+  justify-content: center;
   z-index: 3;
   margin-top: 8px;
   background-image: url(../imagenes/campingnoche.png);
@@ -92,6 +307,16 @@ body .campStatusBox .camping {
   background-repeat: no-repeat;
   background-position: bottom;
   transition: all 3s;
+}
+body .campStatusBox .camping .audioNoche {
+  z-index: 6;
+  display: flex;
+}
+body .campStatusBox .camping .campFire {
+  width: 60px;
+  height: 40px;
+  margin-left: 85px;
+  margin-top: 147px;
 }
 body .campStatusBox .camping img {
   width: 300px;
@@ -109,7 +334,7 @@ body .campStatusBox .sunMoon .sunMoonImg {
   width: 50%;
   margin-top: 60px;
   transform: rotate(0deg);
-  transition: 4s all;
+  transition: 8s all;
 }
 body .playerStatusBox {
   display: flex;
@@ -131,7 +356,8 @@ body .playerStatusBox .playerStatus .statusBarMood {
   align-items: center;
   margin-left: 5px;
   border-radius: 4px;
-  transition: all 3s;
+  transition: all 5s;
+  overflow: hidden;
 }
 body .playerStatusBox .playerStatus .statusBarHealth p,
 body .playerStatusBox .playerStatus .statusBarFatigue p,
@@ -143,6 +369,29 @@ body .playerStatusBox .playerStatus .statusBarMood p {
   font-weight: bolder;
   margin-left: 10px;
   letter-spacing: 5px;
+  z-index: 5;
+}
+body .playerStatusBox .playerStatus .statusBarHealthB,
+body .playerStatusBox .playerStatus .statusBarFatigueB,
+body .playerStatusBox .playerStatus .statusBarHungerB,
+body .playerStatusBox .playerStatus .statusBarThirstB,
+body .playerStatusBox .playerStatus .statusBarMoodB {
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+body .playerStatusBox .playerStatus .statusBarHealthB p,
+body .playerStatusBox .playerStatus .statusBarFatigueB p,
+body .playerStatusBox .playerStatus .statusBarHungerB p,
+body .playerStatusBox .playerStatus .statusBarThirstB p,
+body .playerStatusBox .playerStatus .statusBarMoodB p {
+  color: #3F4E4F;
+  font-size: 12pt;
+  font-weight: 800;
+  margin-left: 55px;
+  margin-top: 10.5px;
+  letter-spacing: 5px;
+  z-index: 4;
 }
 body .playerStatusBox .playerStatus .statusBarHealth {
   background-color: #B33030;
@@ -158,11 +407,42 @@ body .playerStatusBox .playerStatus .statusBarHunger {
 }
 body .playerStatusBox .playerStatus .statusBarThirst {
   background-color: #4B778D;
-  width: 330px;
+  width: 0px;
 }
 body .playerStatusBox .playerStatus .statusBarMood {
   background-color: #ffa322;
-  width: 330px;
+  width: 0px;
+}
+@keyframes shake {
+  0% {
+    transform: translateX(2px);
+  }
+  20% {
+    transform: translateX(0px);
+  }
+  40% {
+    transform: translateX(-2px);
+  }
+  60% {
+    transform: translateX(0px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+  100% {
+    transform: translateX(-2px);
+  }
+}
+body .playerStatusBox .playerStatus .satusIconShake {
+  animation-name: shake;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
+  animation-iteration-count: 3;
+  animation-direction: alternate-reverse;
+}
+body .playerStatusBox .playerStatus .StatusIcon .StatusIconSalud {
+  display: flex;
+  transition: all 1s;
 }
 body .playerStatusBox .playerStatus .StatusIcon img {
   width: 40px;
@@ -178,13 +458,12 @@ body .backPackBox .playerBackPack {
   width: 100%;
 }
 body .backPackBox .playerBackPack .backPackContainers {
-  gap: 2px;
+  gap: 3px;
   display: flex;
   margin-left: 3px;
 }
 body .backPackBox .playerBackPack .backPackContainers .backPackContainer {
   display: flex;
-  justify-content: center;
   align-items: center;
   border-radius: 4px;
   background-color: rgb(220, 220, 220);
@@ -192,18 +471,15 @@ body .backPackBox .playerBackPack .backPackContainers .backPackContainer {
   height: 40px;
   transition: all 1s;
 }
-body .backPackBox .playerBackPack .backPackContainers .backPackContainer:hover {
-  box-shadow: 0px 0px 2px 1px gray;
-}
 body .backPackBox .playerBackPack .backPackContainers .backPackContainer .backPackimg {
   display: flex;
-  gap: 4px;
   z-index: 5;
-  width: 92%;
   color: rgba(255, 255, 255, 0);
 }
-body .backPackBox .playerBackPack .backPackContainers .backPackContainer img {
-  width: 90%;
+body .backPackBox .playerBackPack .backPackContainers .backPackContainer .backPackimg img {
+  width: 40px;
+  border: 1px solid gray;
+  border-radius: 4px;
 }
 body .backPackBox .playerBackPack .backPackIcon img {
   width: 40px;
@@ -224,6 +500,7 @@ body .actionsBox .actionButton {
   background-color: rgb(237, 237, 237);
   border-radius: 5px;
   font-weight: bold;
+  cursor: pointer;
 }
 body .actionsBox .actionButton .actionButtonTitle {
   font-size: 12pt;

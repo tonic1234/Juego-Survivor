@@ -1,0 +1,615 @@
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,600;0,700;0,800;1,500&display=swap');
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../imagenes/leaves.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Urbanist', sans-serif;
+    transition: all 5s;
+
+
+    @keyframes introAnimation {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+
+
+    .loseBox {
+        position: absolute;
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        z-index: 6;
+        background-color: #111313;
+        transition: 5s all;
+        animation-name: introAnimation;
+        animation-duration: 5s;
+
+
+        button {
+            background-color: white;
+            color: black;
+            width: 155px;
+            height: 50px;
+            border-radius: 10px;
+            margin-top: 30px;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+        }
+
+        h2 {
+
+            color: white;
+            font-size: 52pt;
+            text-align: center;
+        }
+    }
+
+    .messageBox {
+        position: absolute;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.965);
+        padding: 5px;
+        border-radius: 20px;
+        width: 590px;
+        height: auto;
+        transition: all 5s;
+        z-index: 7;
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+        border: 1px solid rgb(226, 226, 226);
+        backdrop-filter: blur(1px);
+        animation-name: introAnimation;
+        animation-duration: 0.5s;
+
+
+        p {
+            font-size: 16pt;
+            font-weight: bold;
+            color: #3F4E4F;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+
+        .closeDiv {
+            display: flex;
+            justify-content: end;
+            width: 100%;
+            margin-right: 10px;
+            margin-bottom: 5px;
+
+
+            img {
+                width: 30px;
+                text-align: right;
+                cursor: pointer;
+            }
+        }
+
+
+
+
+    }
+
+    .craftingBox,
+    .recollectBox {
+        position: absolute;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.965);
+        padding: 5px;
+        border-radius: 20px;
+        width: 590px;
+        height: auto;
+        transition: all 5s;
+        z-index: 7;
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+        border: 1px solid rgb(226, 226, 226);
+        backdrop-filter: blur(1px);
+        animation-name: introAnimation;
+        animation-duration: 0.5s;
+
+
+
+
+        .closeDiv {
+            display: flex;
+            justify-content: end;
+            width: 100%;
+            margin-right: 10px;
+            margin-bottom: 5px;
+
+
+            img {
+                width: 30px;
+                text-align: right;
+                cursor: pointer;
+            }
+        }
+
+
+
+
+        .craftItems,
+        .recollectItems {
+            display: flex;
+            gap: 10px;
+
+            .antorchaButton,
+            .recolectorButton,
+            .fogataButton,
+            .recollectOne,
+            .recollectTwo,
+            .recollectThree {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                width: 180px;
+                height: 200px;
+                // border: 1px solid rgb(215, 215, 215);
+                border-radius: 10px;
+                box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.203);
+                background-color: rgb(237, 237, 237);
+                margin-bottom: 20px;
+                border: 1px solid gray;
+                cursor: pointer;
+
+                img {
+                    width: 80%;
+                    margin-bottom: 10px;
+                }
+            }
+
+            .antorchaButton {
+                opacity: 30%;
+                filter: grayscale(100%);
+
+            }
+
+            .recolectorButton {
+                opacity: 30%;
+                filter: grayscale(100%);
+
+            }
+
+            .fogataButton {
+                opacity: 30%;
+                filter: grayscale(100%);
+
+            }
+
+
+        }
+
+
+
+    }
+
+
+
+    .gameBox {
+        background-color: rgb(255, 255, 255);
+        padding: 10px;
+        border-radius: 20px;
+        width: 414px;
+        height: 900px;
+        transition: all 4s;
+        // box-shadow: 1px 2px 5px rgb(200, 200, 200);
+
+
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 50px;
+            margin-bottom: 20px;
+
+
+            .headerMenuIconBox {
+                display: flex;
+                justify-content: end;
+                align-items: center;
+                margin-right: 20px;
+                width: 100%;
+
+                img {
+                    width: 30%;
+                }
+            }
+
+            .headerCampUpGradesBox {
+
+                display: flex;
+                justify-content: end;
+                align-items: center;
+                gap: 5px;
+
+
+                .upgradeIconAntorcha {
+                    visibility: visible;
+                }
+
+                .upgradeIconRecolector {
+                    visibility: hidden;
+                }
+
+                .upgradeIconFogata {
+                    visibility: hidden;
+                }
+
+                img {
+                    width: 30px;
+                }
+            }
+
+            .headerClockBox {
+
+                display: flex;
+                align-items: center;
+                margin-left: 10px;
+
+                p {
+                    font-weight: bold;
+                    font-size: 14pt;
+                    line-height: 18px;
+                }
+
+
+                img {
+                    width: 25%;
+                    // margin-right: 10px;
+                }
+            }
+        }
+
+
+    }
+
+    .campStatusBox {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        margin-bottom: 10px;
+        height: 195px;
+        overflow: hidden;
+
+
+
+        .sky {
+            position: absolute;
+            height: 320px;
+            width: 340px;
+            margin-top: -40px;
+            background-image: url(../imagenes/cielodia.png);
+            background-size: contain;
+            background-position: center, top;
+            background-repeat: no-repeat;
+            transition: all 3s;
+
+
+        }
+
+        .camping {
+            width: 100%;
+            height: 200px;
+            display: flex;
+            justify-content: center;
+
+            z-index: 3;
+            margin-top: 8px;
+            background-image: url(../imagenes/campingnoche.png);
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            transition: all 3s;
+
+
+            .audioNoche {
+                z-index: 6;
+                display: flex;
+            }
+
+            .campFire {
+                width: 60px;
+                height: 40px;
+                margin-left: 85px;
+                margin-top: 147px;
+
+            }
+
+
+
+            img {
+                width: 300px;
+
+            }
+        }
+
+
+        .sunMoon {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+            overflow: hidden;
+            z-index: 2;
+
+
+            .sunMoonImg {
+                width: 50%;
+                margin-top: 60px;
+                transform: rotate(0deg);
+                transition: 8s all;
+            }
+        }
+    }
+
+    .playerStatusBox {
+
+        display: flex;
+        // width: 100%;
+        flex-direction: column;
+        gap: 5px;
+        margin-left: 10px;
+
+        .playerStatus {
+            display: flex;
+            height: 40px;
+            width: 100%;
+
+            .statusBarHealth,
+            .statusBarFatigue,
+            .statusBarHunger,
+            .statusBarThirst,
+            .statusBarMood {
+
+                display: flex;
+                align-items: center;
+                margin-left: 5px;
+                border-radius: 4px;
+                transition: all 5s;
+                overflow: hidden;
+
+
+                p {
+                    color: white;
+                    font-size: 12pt;
+                    font-weight: bolder;
+                    margin-left: 10px;
+                    letter-spacing: 5px;
+                    z-index: 5;
+
+                }
+
+
+
+
+            }
+
+            .statusBarHealthB,
+            .statusBarFatigueB,
+            .statusBarHungerB,
+            .statusBarThirstB,
+            .statusBarMoodB {
+                position: absolute;
+                display: flex;
+                align-items: center;
+                            
+                
+                p {
+                    color: #3F4E4F;
+                    font-size: 12pt;
+                    font-weight: 800;
+                    margin-left: 55px;
+                    margin-top: 10.5px;
+                    letter-spacing: 5px;
+                    z-index: 4;
+
+                }
+
+
+
+
+            }
+
+
+            .statusBarHealth {
+                background-color: #B33030;
+                width: 0px;
+                ;
+            }
+
+            .statusBarFatigue {
+                background-color: #3F4E4F;
+                width: 0px;
+            }
+
+            .statusBarHunger {
+                background-color: #4E944F;
+                width: 0px;
+            }
+
+            .statusBarThirst {
+                background-color: #4B778D;
+                width: 0px;
+            }
+
+            .statusBarMood {
+                background-color: #ffa322;
+                width: 0px;
+            }
+
+
+            @keyframes shake {
+                0% {
+                    transform: translateX(2px);
+                }
+
+                20% {
+                    transform: translateX(0px);
+                }
+
+                40% {
+                    transform: translateX(-2px);
+                }
+
+                60% {
+                    transform: translateX(0px);
+                }
+
+                80% {
+                    transform: translateX(2px);
+                }
+
+                100% {
+                    transform: translateX(-2px);
+                }
+            }
+
+            .satusIconShake {
+                animation-name: shake;
+                animation-duration: 0.2s;
+                animation-timing-function: linear;
+                animation-iteration-count: 3;
+                animation-direction: alternate-reverse;
+            }
+
+
+            .StatusIcon {
+                .StatusIconSalud {
+                    display: flex;
+                    transition: all 1s;
+                }
+
+                img {
+                    width: 40px;
+
+                }
+            }
+        }
+
+    }
+
+    .backPackBox {
+
+        display: flex;
+        // width: 100%;
+        margin-top: 10px;
+        margin-left: 10px;
+
+        .playerBackPack {
+            display: flex;
+            height: 40px;
+            width: 100%;
+
+
+            .backPackContainers {
+                gap: 3px;
+                display: flex;
+                margin-left: 3px;
+
+                .backPackContainer {
+                    display: flex;
+
+                    align-items: center;
+                    border-radius: 4px;
+                    background-color: rgb(220, 220, 220);
+                    width: 40px;
+                    height: 40px;
+                    transition: all 1s;
+
+
+
+                    .backPackimg {
+                        display: flex;
+
+                        z-index: 5;
+                        color: #ffffff00;
+
+                        img {
+                            width: 40px;
+                            border: 1px solid gray;
+                            border-radius: 4px;
+                        }
+
+                    }
+
+
+                }
+            }
+
+            .backPackIcon {
+
+                img {
+
+                    width: 40px;
+                }
+
+            }
+        }
+
+    }
+
+    .actionsBox {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .actionButton {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            align-items: center;
+            background-color: rgb(237, 237, 237);
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+
+
+            .actionButtonTitle {
+                font-size: 12pt;
+            }
+
+            .actionDescription {
+                font-size: 9pt;
+            }
+        }
+
+    }
+}
