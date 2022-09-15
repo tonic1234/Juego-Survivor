@@ -454,7 +454,7 @@ function sunMoon() {
 
 function dayNight() {
     if (hora >= 6 && hora < 17) {
-        document.querySelector("body").style.backgroundImage = "url(../imagenes/cielodiabg.jpg)";
+        document.querySelector("body").style.backgroundImage = "url(../imagenes/cielodiabg.png)";
         document.querySelector(".sky").style.backgroundImage = "url(../imagenes/cielodia.png)";
         document.querySelector(".camping").style.backgroundImage = "url(../imagenes/campingdia.png)"
 
@@ -464,7 +464,7 @@ function dayNight() {
         document.querySelector(".camping").style.backgroundImage = "url(../imagenes/campingdia.png)"
 
     } else {
-        document.querySelector("body").style.backgroundImage = "url(../imagenes/cielonochebg.jpg)";
+        document.querySelector("body").style.backgroundImage = "url(../imagenes/cielonochebg.png)";
         document.querySelector(".sky").style.backgroundImage = "url(../imagenes/cielonoche2.png)";
         document.querySelector(".camping").style.backgroundImage = "url(../imagenes/campingnoche.png)"
 
@@ -1023,6 +1023,30 @@ function fabricar() {
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>INICIO DEL PROGRAMA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+
+setTimeout(function () {
+    document.querySelector(".loadScreen").style.backgroundImage = "url(../imagenes/cielodiabg.png)";
+}, 2500);
+
+setTimeout(function () {
+    document.querySelector(".loadScreen").style.backgroundImage = "url(../imagenes/cielotardebg.jpg)";
+}, 3500);
+
+setTimeout(function () {
+    document.querySelector(".loadScreen").style.backgroundImage = "url(../imagenes/cielonochebg.png)";
+}, 4500);
+
+setTimeout(function () {
+    document.querySelector(".loadScreen").style.opacity = "0";
+}, 7500);
+
+setTimeout(function () {
+    document.querySelector(".loadScreen").style.display = "none";
+}, 10000);
+
+
+
+
 //Botones de la interfaz
 
 
@@ -1070,6 +1094,7 @@ recolectarB.addEventListener('click', botonRecolectar);
 
 closeRecollect.addEventListener('click', function () {
     document.querySelector(".recollectBox").style.display = "none";
+    recoleccion = []
     document.querySelector(".recollectOne").innerHTML = `<lottie-player class="loadRecollect" src="./imagenes/loaddots.json" speed="1" loop autoplay>
     </lottie-player> `;
     document.querySelector(".recollectTwo").innerHTML = ` <lottie-player class="loadRecollect" src="./imagenes/loaddots.json" speed="1" loop autoplay>
