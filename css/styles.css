@@ -11,7 +11,7 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-image: url(../imagenes/leaves.jpg);
+  background-image: url(../imagenes/cielodiabg.png);
   background-size: cover;
   background-repeat: no-repeat;
   font-family: "Urbanist", sans-serif;
@@ -24,6 +24,85 @@ body {
   to {
     opacity: 1;
   }
+}
+body .inventoryBox {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.965);
+  padding: 5px;
+  border-radius: 20px;
+  width: 620px;
+  height: auto;
+  transition: all 5s;
+  z-index: 7;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+  border: 1px solid rgb(226, 226, 226);
+  backdrop-filter: blur(1px);
+  animation-name: introAnimation;
+  animation-duration: 0.5s;
+}
+body .inventoryBox .topBox {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+  width: 100%;
+}
+body .inventoryBox .topBox .screenTitle {
+  font-weight: 600;
+  font-size: 15pt;
+  color: #363636;
+  margin-top: 4px;
+}
+body .inventoryBox .topBox img {
+  width: 25px;
+  margin-right: 5px;
+  margin-top: 7px;
+  cursor: pointer;
+}
+body .inventoryBox .inventorySlotBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  width: 95%;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+body .inventoryBox .inventorySlotBox .discardbox {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 130px;
+  height: 140px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.203);
+  background-color: rgb(237, 237, 237);
+  border: 1px solid gray;
+  cursor: pointer;
+  transition: all 3s;
+}
+body .inventoryBox .inventorySlotBox .discardbox:hover .discartIcon {
+  opacity: 1;
+}
+body .inventoryBox .inventorySlotBox .discardbox .discartIcon {
+  opacity: 0;
+  position: absolute;
+  width: 20px;
+  top: 10px;
+  right: 10px;
+  transition: 1s all;
+}
+body .inventoryBox .inventorySlotBox .discardbox .discartIcon:hover {
+  transform: scale(1.2);
+}
+body .inventoryBox .inventorySlotBox .discardbox img {
+  width: 70px;
 }
 body .loseBox {
   position: absolute;
@@ -56,6 +135,87 @@ body .loseBox h2 {
   color: white;
   font-size: 52pt;
   text-align: center;
+  margin-bottom: 18px;
+}
+body .loseBox .timeScore {
+  color: white;
+  font-size: 16pt;
+  text-align: center;
+  font-weight: 600;
+}
+body .menuBgOut {
+  opacity: 0;
+}
+body .menuBg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-image: url(../imagenes/main.png);
+  background-size: cover;
+  z-index: 10;
+  transition: all 3s;
+}
+body .menuBox {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 12px;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255, 255, 255, 0.965);
+  padding: 5px;
+  border-radius: 20px;
+  width: 390px;
+  height: 200px;
+  transition: all 5s;
+  z-index: 7;
+  box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+  border: 1px solid rgb(226, 226, 226);
+  backdrop-filter: blur(1px);
+  animation-name: introAnimation;
+  animation-duration: 0.5s;
+}
+body .menuBox button {
+  background-color: rgb(237, 237, 237);
+  color: black;
+  width: 155px;
+  height: 50px;
+  border-radius: 10px;
+  font-family: "Urbanist", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+body .menuBox .menuText {
+  font-family: "Urbanist", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+body .menuBox .nameBox {
+  width: 280px;
+  height: 40px;
+  border-radius: 10px;
+  font-family: "Urbanist", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 5px;
+}
+body .menuBox .closeDiv {
+  display: flex;
+  justify-content: end;
+  width: 100%;
+  margin-right: 10px;
+  margin-bottom: 5px;
+}
+body .menuBox .closeDiv img {
+  width: 30px;
+  text-align: right;
+  cursor: pointer;
 }
 body .messageBox {
   position: absolute;
@@ -63,9 +223,9 @@ body .messageBox {
   flex-direction: column;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.965);
-  padding: 5px;
+  padding: 15px;
   border-radius: 20px;
-  width: 590px;
+  width: 500px;
   height: auto;
   transition: all 5s;
   z-index: 7;
@@ -76,6 +236,7 @@ body .messageBox {
   animation-duration: 0.5s;
 }
 body .messageBox p {
+  width: 90%;
   font-size: 16pt;
   font-weight: bold;
   color: #3F4E4F;
@@ -90,7 +251,7 @@ body .messageBox .closeDiv {
   margin-bottom: 5px;
 }
 body .messageBox .closeDiv img {
-  width: 30px;
+  width: 25px;
   text-align: right;
   cursor: pointer;
 }
@@ -99,11 +260,12 @@ body .recollectBox {
   position: absolute;
   display: none;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.965);
   padding: 5px;
   border-radius: 20px;
-  width: 590px;
+  width: 650px;
   height: auto;
   transition: all 5s;
   z-index: 7;
@@ -111,20 +273,41 @@ body .recollectBox {
   border: 1px solid rgb(226, 226, 226);
   backdrop-filter: blur(1px);
   animation-name: introAnimation;
-  animation-duration: 0.5s;
+  animation-duration: 0.2s;
+  gap: 5px;
 }
 body .craftingBox .closeDiv,
 body .recollectBox .closeDiv {
   display: flex;
   justify-content: end;
-  width: 100%;
-  margin-right: 10px;
-  margin-bottom: 5px;
 }
 body .craftingBox .closeDiv img,
 body .recollectBox .closeDiv img {
-  width: 30px;
-  text-align: right;
+  width: 25px;
+  margin-right: 5px;
+  margin-top: 7px;
+  cursor: pointer;
+}
+body .craftingBox .topBox,
+body .recollectBox .topBox {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  gap: 10px;
+  width: 100%;
+}
+body .craftingBox .topBox .screenTitleCraft,
+body .recollectBox .topBox .screenTitleCraft {
+  font-weight: 600;
+  font-size: 15pt;
+  color: #363636;
+  margin-top: 4px;
+}
+body .craftingBox .topBox img,
+body .recollectBox .topBox img {
+  width: 25px;
+  margin-right: 5px;
+  margin-top: 7px;
   cursor: pointer;
 }
 body .craftingBox .craftItems,
@@ -162,15 +345,100 @@ body .recollectBox .recollectItems .recollectThree {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 5px;
   padding: 20px;
-  width: 180px;
-  height: 200px;
+  width: 200px;
+  height: 250px;
   border-radius: 10px;
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.203);
   background-color: rgb(237, 237, 237);
-  margin-bottom: 20px;
+  margin-bottom: 40px;
   border: 1px solid gray;
   cursor: pointer;
+}
+body .craftingBox .craftItems .antorchaButton .craftTitle,
+body .craftingBox .craftItems .recolectorButton .craftTitle,
+body .craftingBox .craftItems .fogataButton .craftTitle,
+body .craftingBox .craftItems .recollectOne .craftTitle,
+body .craftingBox .craftItems .recollectTwo .craftTitle,
+body .craftingBox .craftItems .recollectThree .craftTitle,
+body .craftingBox .recollectItems .antorchaButton .craftTitle,
+body .craftingBox .recollectItems .recolectorButton .craftTitle,
+body .craftingBox .recollectItems .fogataButton .craftTitle,
+body .craftingBox .recollectItems .recollectOne .craftTitle,
+body .craftingBox .recollectItems .recollectTwo .craftTitle,
+body .craftingBox .recollectItems .recollectThree .craftTitle,
+body .recollectBox .craftItems .antorchaButton .craftTitle,
+body .recollectBox .craftItems .recolectorButton .craftTitle,
+body .recollectBox .craftItems .fogataButton .craftTitle,
+body .recollectBox .craftItems .recollectOne .craftTitle,
+body .recollectBox .craftItems .recollectTwo .craftTitle,
+body .recollectBox .craftItems .recollectThree .craftTitle,
+body .recollectBox .recollectItems .antorchaButton .craftTitle,
+body .recollectBox .recollectItems .recolectorButton .craftTitle,
+body .recollectBox .recollectItems .fogataButton .craftTitle,
+body .recollectBox .recollectItems .recollectOne .craftTitle,
+body .recollectBox .recollectItems .recollectTwo .craftTitle,
+body .recollectBox .recollectItems .recollectThree .craftTitle {
+  font-size: 14pt;
+  font-weight: 600;
+  text-align: center;
+  line-height: 16px;
+}
+body .craftingBox .craftItems .antorchaButton .craftMaterials,
+body .craftingBox .craftItems .recolectorButton .craftMaterials,
+body .craftingBox .craftItems .fogataButton .craftMaterials,
+body .craftingBox .craftItems .recollectOne .craftMaterials,
+body .craftingBox .craftItems .recollectTwo .craftMaterials,
+body .craftingBox .craftItems .recollectThree .craftMaterials,
+body .craftingBox .recollectItems .antorchaButton .craftMaterials,
+body .craftingBox .recollectItems .recolectorButton .craftMaterials,
+body .craftingBox .recollectItems .fogataButton .craftMaterials,
+body .craftingBox .recollectItems .recollectOne .craftMaterials,
+body .craftingBox .recollectItems .recollectTwo .craftMaterials,
+body .craftingBox .recollectItems .recollectThree .craftMaterials,
+body .recollectBox .craftItems .antorchaButton .craftMaterials,
+body .recollectBox .craftItems .recolectorButton .craftMaterials,
+body .recollectBox .craftItems .fogataButton .craftMaterials,
+body .recollectBox .craftItems .recollectOne .craftMaterials,
+body .recollectBox .craftItems .recollectTwo .craftMaterials,
+body .recollectBox .craftItems .recollectThree .craftMaterials,
+body .recollectBox .recollectItems .antorchaButton .craftMaterials,
+body .recollectBox .recollectItems .recolectorButton .craftMaterials,
+body .recollectBox .recollectItems .fogataButton .craftMaterials,
+body .recollectBox .recollectItems .recollectOne .craftMaterials,
+body .recollectBox .recollectItems .recollectTwo .craftMaterials,
+body .recollectBox .recollectItems .recollectThree .craftMaterials {
+  font-size: 11pt;
+  font-weight: 500;
+  color: #2e2e2e;
+  text-align: center;
+}
+body .craftingBox .craftItems .antorchaButton .craftDescription,
+body .craftingBox .craftItems .recolectorButton .craftDescription,
+body .craftingBox .craftItems .fogataButton .craftDescription,
+body .craftingBox .craftItems .recollectOne .craftDescription,
+body .craftingBox .craftItems .recollectTwo .craftDescription,
+body .craftingBox .craftItems .recollectThree .craftDescription,
+body .craftingBox .recollectItems .antorchaButton .craftDescription,
+body .craftingBox .recollectItems .recolectorButton .craftDescription,
+body .craftingBox .recollectItems .fogataButton .craftDescription,
+body .craftingBox .recollectItems .recollectOne .craftDescription,
+body .craftingBox .recollectItems .recollectTwo .craftDescription,
+body .craftingBox .recollectItems .recollectThree .craftDescription,
+body .recollectBox .craftItems .antorchaButton .craftDescription,
+body .recollectBox .craftItems .recolectorButton .craftDescription,
+body .recollectBox .craftItems .fogataButton .craftDescription,
+body .recollectBox .craftItems .recollectOne .craftDescription,
+body .recollectBox .craftItems .recollectTwo .craftDescription,
+body .recollectBox .craftItems .recollectThree .craftDescription,
+body .recollectBox .recollectItems .antorchaButton .craftDescription,
+body .recollectBox .recollectItems .recolectorButton .craftDescription,
+body .recollectBox .recollectItems .fogataButton .craftDescription,
+body .recollectBox .recollectItems .recollectOne .craftDescription,
+body .recollectBox .recollectItems .recollectTwo .craftDescription,
+body .recollectBox .recollectItems .recollectThree .craftDescription {
+  text-align: center;
 }
 body .craftingBox .craftItems .antorchaButton img,
 body .craftingBox .craftItems .recolectorButton img,
@@ -276,12 +544,22 @@ body .gameBox header .headerClockBox p {
 body .gameBox header .headerClockBox img {
   width: 25%;
 }
+body .campingMask {
+  display: flex;
+  justify-content: center;
+  margin-top: -35px;
+  margin-bottom: 10px;
+  height: 229px;
+  overflow: hidden;
+}
 body .campStatusBox {
   display: flex;
   position: relative;
   justify-content: center;
   margin-bottom: 10px;
-  height: 195px;
+  height: 310px;
+  width: 310px;
+  border-radius: 200px;
   overflow: hidden;
 }
 body .campStatusBox .sky {
@@ -296,27 +574,73 @@ body .campStatusBox .sky {
   transition: all 3s;
 }
 body .campStatusBox .camping {
-  width: 100%;
-  height: 200px;
+  width: 350px;
+  height: 220px;
+  position: absolute;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   z-index: 3;
-  margin-top: 8px;
+  margin-top: 25px;
   background-image: url(../imagenes/campingnoche.png);
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;
   transition: all 3s;
 }
-body .campStatusBox .camping .audioNoche {
-  z-index: 6;
-  display: flex;
+@keyframes fireglow {
+  0% {
+    transform: scale(1.1);
+  }
+  20% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(0.9);
+  }
+  60% {
+    transform: scale(1);
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+body .campStatusBox .camping .fireglow {
+  position: absolute;
+  animation-name: fireglow;
+  animation-iteration-count: infinite;
+  animation-duration: 3s;
+  animation-direction: alternate-reverse;
+  margin-left: 97px;
+  margin-top: 130px;
+  z-index: 2;
+}
+body .campStatusBox .camping .fireRock {
+  width: 40px;
+  margin-left: 3px;
+  margin-left: 225px;
+  margin-top: 175px;
+  transition: 5s all;
+  z-index: 3;
+}
+body .campStatusBox .camping .fireRockNigth {
+  position: absolute;
+  width: 40px;
+  margin-left: 3px;
+  margin-left: 225px;
+  margin-top: 175px;
+  transition: 5s all;
+  z-index: 3;
 }
 body .campStatusBox .camping .campFire {
-  width: 60px;
-  height: 40px;
-  margin-left: 85px;
-  margin-top: 147px;
+  position: absolute;
+  width: 55px;
+  margin-top: 110px;
+  margin-left: 220px;
+  z-index: 4;
 }
 body .campStatusBox .camping img {
   width: 300px;
@@ -326,13 +650,12 @@ body .campStatusBox .sunMoon {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 200px;
+  width: 400px;
   overflow: hidden;
   z-index: 2;
 }
 body .campStatusBox .sunMoon .sunMoonImg {
-  width: 50%;
-  margin-top: 60px;
+  width: 80%;
   transform: rotate(0deg);
   transition: 8s all;
 }
@@ -482,7 +805,12 @@ body .backPackBox .playerBackPack .backPackContainers .backPackContainer .backPa
   border-radius: 4px;
 }
 body .backPackBox .playerBackPack .backPackIcon img {
+  cursor: pointer;
   width: 40px;
+  transition: 1s all;
+}
+body .backPackBox .playerBackPack .backPackIcon img:hover {
+  transform: scale(1.1);
 }
 body .actionsBox {
   margin-top: 10px;

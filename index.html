@@ -12,36 +12,103 @@
 
 <body id="body">
 
-<!-- Pantalla de juego perdido -->
+    <!-- Pantalla de juego perdido -->
 
-<div class="loseBox" >
-    <h2>Juego Perdido</h2>
-    <button class="reStartButton">Jugar de nuevo</button></div>
+    <div class="loseBox">
+        <h2>Juego Perdido</h2>
+        <p class="timeScore"></p>
+
+        <button class="reStartButton">Jugar de nuevo</button>
+    </div>
+
+    <!-- Pantalla de Nombre de Usuario -->
+    <div class="menuBg">
+        <div class="menuBox">
+            <p class="menuText">Ingrese su nombre</p><input class="nameBox" type="text"><button
+                class="startButton">Jugar</button>
+        </div>
+    </div>
+
 
     <!-- Pantalla de mensajes -->
 
 
     <div class="messageBox">
         <div class="closeDiv"><img id="closeIconMsg" src="./imagenes/close.png" alt=""></div>
-        <p class="message" >No puedes recolectar de noche sin algo que te ilumine</p>
+        <p class="message">No puedes recolectar de noche sin algo que te ilumine</p>
     </div>
 
+    <!-- Pantalla de mochila -->
+
+
+    <div class="inventoryBox">
+        <div class="topBox">
+            <p class="screenTitle">Mochila</p>
+            <img id="closeIconInventory" src="./imagenes/close.png" alt="">
+        </div>
+        <div class="inventorySlotBox">
+
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_1" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_1"></div>
+                <pc class="inventoryTitle_1"></p>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_2" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_2"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_3" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_3"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_4" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_4"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_5" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_5"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_6" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_6"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_7" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_7"></div>
+            </div>
+            <div class="discardbox"><img class="discartIcon" id="inventorySlotDiscart_8" src="./imagenes/eliminar.png"
+                    alt="">
+                <div class="inventorySlot" id="inventorySlot_8"></div>
+            </div>
+
+        </div>
+    </div>
 
 
 
     <!-- Pantalla de crafting -->
 
     <div class="craftingBox">
-        <div class="closeDiv"><img id="closeIconCraft" src="./imagenes/close.png" alt=""></div>
+        <div class="topBox">
+            <p class="screenTitleCraft">Fabricación</p>
+            <img id="closeIconCraft" src="./imagenes/close.png" alt="">
+        </div>
         <div class="craftItems">
             <div class="fogataButton"><img src="./imagenes/fuego.png" alt="">
-                <p>Fogata</p>
+                <p class="craftTitle">Fogata</p>
+                <p class="craftMaterials">Palo x 4, Piedra x 2</p>
+                <p class="craftDescription">Te permite cocinar y sube tu animo</p>
             </div>
             <div class="recolectorButton"><img src="./imagenes/recolectordeagua.png" alt="">
-                <p>Recolector de agua</p>
+                <p class="craftTitle">Recolector</p>
+                <p class="craftMaterials">Botella x 1, Hoja x 4</p>
+                <p class="craftDescription">Recolecta agua de roció cada 12 horas</p>
             </div>
             <div class="antorchaButton"><img src="./imagenes/antorcha.png" alt="">
-                <p>Antorcha</p>
+                <p class="craftTitle">Antorcha</p>
+                <p class="craftMaterials">Palo x 1, Hoja x 2</p>
+                <p class="craftDescription">Te permite recolectar en la noche</p>
             </div>
         </div>
     </div>
@@ -49,7 +116,10 @@
     <!-- Pantalla de recolección -->
 
     <div class="recollectBox">
-        <div class="closeDiv"><img id="closeIconRecollect" src="./imagenes/close.png" alt=""></div>
+        <div class="topBox">
+            <p class="screenTitleCraft">Recolección</p>
+            <img id="closeIconRecollect" src="./imagenes/close.png" alt="">
+        </div>
         <div class="recollectItems">
             <div class="recollectOne">
                 <lottie-player class="loadRecollect" src="./imagenes/loaddots.json" speed="1" loop autoplay>
@@ -65,7 +135,6 @@
             </div>
         </div>
     </div>
-
 
     <!-- Pantalla Principal -->
 
@@ -84,16 +153,21 @@
             <div class="headerMenuIconBox"><img src="./imagenes/menu.png" alt=""></div>
         </header>
         <main>
+            <div class="campingMask">
             <div class="campStatusBox">
 
                 <div class="camping">
-                    <img class="campFire" src="./imagenes/fuego.gif" alt="">
-                    <!-- <lottie-player class="campFire" src="https://assets7.lottiefiles.com/packages/lf20_h0ndayrd.json"
-                        speed="1" loop autoplay></lottie-player> -->
+                    <lottie-player class="campFire" src="./imagenes/19597-fire-flame-burning.json" speed="1" loop
+                        autoplay>
+                    </lottie-player>
+                    <img class="fireRock" src="./imagenes/basefuego.png" alt="">
+                    <img class="fireRockNigth" src="./imagenes/basefuegoNoche.png" alt="">
+                    <img class="fireglow" src="./imagenes/resplandor.png" alt="">
                 </div>
-                <div class="sunMoon"><img class="sunMoonImg" src="./imagenes/solluna.png" alt=""></div>
+                <div class="sunMoon"><img class="sunMoonImg" src="./imagenes/solluna2.png" alt=""></div>
                 <div class="sky"></div>
             </div>
+        </div>
             <div class="playerStatusBox">
 
                 <div class="playerStatus">
@@ -181,11 +255,11 @@
             <div class="actionsBox">
                 <div class="actionButton" id="comerButton">
                     <p class="actionButtonTitle">Comer</p>
-                    <p class="actionDescription">Hambre:-5 Sed:+20 Cansancio:+20 Moral:+10 Tiempo:1 hora</p>
+                    <p class="actionDescription">Hambre:-15 Sed:-15 Cansancio:+5 Moral:+10 Tiempo:1 hora</p>
                 </div>
                 <div class="actionButton" id="aguaButton">
                     <p class="actionButtonTitle">Tomar Agua</p>
-                    <p class="actionDescription">Hambre:-5 Sed:-30, Cansancio:-10, Moral:+10, Tiempo: 1 hora</p>
+                    <p class="actionDescription">Hambre:-5 Sed:-20, Cansancio:-5, Moral:+10, Tiempo: 1 hora</p>
                 </div>
                 <div class="actionButton" id="dormirButton">
                     <p class="actionButtonTitle">Dormir</p>
@@ -197,11 +271,11 @@
                 </div>
                 <div class="actionButton" id="fabricarButton">
                     <p class="actionButtonTitle">Fabricar</p>
-                    <p class="actionDescription">Hambre:+20, Sed:+30, Cansancio:+30, Moral: +20, Tiempo: 2 horas</p>
+                    <p class="actionDescription">Hambre:+20, Sed:+20, Cansancio:+40, Moral: +20, Tiempo: 2 horas</p>
                 </div>
                 <div class="actionButton" id="esperarButton">
                     <p class="actionButtonTitle">Esperar</p>
-                    <p class="actionDescription">Hambre:+20, Sed:+10 Cansancio:+10, Moral: -20, Tiempo: 3 horas</p>
+                    <p class="actionDescription">Hambre:+10, Sed:+10 Cansancio:+10, Moral: -20, Tiempo: 3 horas</p>
                 </div>
             </div>
 

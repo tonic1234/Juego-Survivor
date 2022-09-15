@@ -15,7 +15,7 @@ body {
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-image: url(../imagenes/leaves.jpg);
+    background-image: url(../imagenes/cielodiabg.png);
     background-size: cover;
     background-repeat: no-repeat;
     font-family: 'Urbanist', sans-serif;
@@ -31,6 +31,116 @@ body {
             opacity: 1;
         }
     }
+
+
+
+
+    .inventoryBox {
+        position: absolute;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(255, 255, 255, 0.965);
+        padding: 5px;
+        border-radius: 20px;
+        width: 620px;
+        height: auto;
+        transition: all 5s;
+        z-index: 7;
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+        border: 1px solid rgb(226, 226, 226);
+        backdrop-filter: blur(1px);
+        animation-name: introAnimation;
+        animation-duration: 0.5s;
+
+
+
+        .topBox {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            gap: 10px;
+            width: 100%;
+
+
+
+            .screenTitle {
+                font-weight: 600;
+                font-size: 15pt;
+                color: #363636;
+                margin-top: 4px;
+            }
+
+            img {
+                width: 25px;
+                margin-right: 5px;
+                margin-top: 7px;
+                cursor: pointer;
+            }
+
+        }
+
+
+        .inventorySlotBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            width: 95%;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+
+            .discardbox {
+                display: flex;
+                position: relative;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+                width: 130px;
+                height: 140px;
+                border-radius: 10px;
+                box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.203);
+                background-color: rgb(237, 237, 237);
+                border: 1px solid gray;
+                cursor: pointer;
+                transition: all 3s;
+
+
+                &:hover {
+                    .discartIcon {
+                        opacity: 1;
+                    }
+                }
+
+
+                .discartIcon {
+                    opacity: 0;
+                    position: absolute;
+                    width: 20px;
+                    top: 10px;
+                    right: 10px;
+                    transition: 1s all;
+
+
+                    &:hover {
+                        transform: scale(1.2);
+                    }
+                }
+
+                img {
+                    width: 70px;
+                }
+            }
+        }
+
+
+
+
+    }
+
+
+
 
 
 
@@ -68,8 +178,112 @@ body {
             color: white;
             font-size: 52pt;
             text-align: center;
+            margin-bottom: 18px;
+        }
+
+
+        .timeScore {
+            color: white;
+            font-size: 16pt;
+            text-align: center;
+            font-weight: 600;
+
         }
     }
+
+
+.menuBgOut{
+    opacity: 0;
+}
+
+
+    .menuBg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        background-image: url(../imagenes/main.png);
+        background-size: cover;
+        z-index: 10;
+        transition: all 3s;
+    }
+
+
+
+    .menuBox {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-left: 12px;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(255, 255, 255, 0.965);
+        padding: 5px;
+        border-radius: 20px;
+        width: 390px;
+        height: 200px;
+        transition: all 5s;
+        z-index: 7;
+        box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.203);
+        border: 1px solid rgb(226, 226, 226);
+        backdrop-filter: blur(1px);
+        animation-name: introAnimation;
+        animation-duration: 0.5s;
+
+
+        button {
+            background-color: rgb(237, 237, 237);
+            color: black;
+            width: 155px;
+            height: 50px;
+            border-radius: 10px;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+
+        }
+
+
+
+        .menuText {
+            font-family: 'Urbanist', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .nameBox {
+            width: 280px;
+            height: 40px;
+            border-radius: 10px;
+            font-family: 'Urbanist', sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 5px;
+        }
+
+
+        .closeDiv {
+            display: flex;
+            justify-content: end;
+            width: 100%;
+            margin-right: 10px;
+            margin-bottom: 5px;
+
+
+            img {
+                width: 30px;
+                text-align: right;
+                cursor: pointer;
+            }
+        }
+    }
+
+
 
     .messageBox {
         position: absolute;
@@ -77,9 +291,9 @@ body {
         flex-direction: column;
         align-items: center;
         background-color: rgba(255, 255, 255, 0.965);
-        padding: 5px;
+        padding: 15px;
         border-radius: 20px;
-        width: 590px;
+        width: 500px;
         height: auto;
         transition: all 5s;
         z-index: 7;
@@ -91,6 +305,7 @@ body {
 
 
         p {
+            width: 90%;
             font-size: 16pt;
             font-weight: bold;
             color: #3F4E4F;
@@ -108,7 +323,7 @@ body {
 
 
             img {
-                width: 30px;
+                width: 25px;
                 text-align: right;
                 cursor: pointer;
             }
@@ -124,11 +339,12 @@ body {
         position: absolute;
         display: none;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
         background-color: rgba(255, 255, 255, 0.965);
         padding: 5px;
         border-radius: 20px;
-        width: 590px;
+        width: 650px;
         height: auto;
         transition: all 5s;
         z-index: 7;
@@ -136,26 +352,47 @@ body {
         border: 1px solid rgb(226, 226, 226);
         backdrop-filter: blur(1px);
         animation-name: introAnimation;
-        animation-duration: 0.5s;
-
-
+        animation-duration: 0.2s;
+        gap: 5px;
 
 
         .closeDiv {
             display: flex;
             justify-content: end;
-            width: 100%;
-            margin-right: 10px;
-            margin-bottom: 5px;
-
 
             img {
-                width: 30px;
-                text-align: right;
+                width: 25px;
+                margin-right: 5px;
+                margin-top: 7px;
                 cursor: pointer;
             }
         }
 
+
+        .topBox {
+            display: flex;
+            align-items: center;
+            justify-content: end;
+            gap: 10px;
+            width: 100%;
+
+
+
+            .screenTitleCraft {
+                font-weight: 600;
+                font-size: 15pt;
+                color: #363636;
+                margin-top: 4px;
+            }
+
+            img {
+                width: 25px;
+                margin-right: 5px;
+                margin-top: 7px;
+                cursor: pointer;
+            }
+
+        }
 
 
 
@@ -174,16 +411,35 @@ body {
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                gap: 5px;
                 padding: 20px;
-                width: 180px;
-                height: 200px;
-                // border: 1px solid rgb(215, 215, 215);
+                width: 200px;
+                height: 250px;
                 border-radius: 10px;
                 box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.203);
                 background-color: rgb(237, 237, 237);
-                margin-bottom: 20px;
+                margin-bottom: 40px;
                 border: 1px solid gray;
                 cursor: pointer;
+
+                .craftTitle {
+                    font-size: 14pt;
+                    font-weight: 600;
+                    text-align: center;
+                    line-height: 16px;
+                }
+
+                .craftMaterials {
+                    font-size: 11pt;
+                    font-weight: 500;
+                    color: #2e2e2e;
+                    text-align: center;
+                }
+
+                .craftDescription {
+                    text-align: center;
+                }
+
 
                 img {
                     width: 80%;
@@ -297,13 +553,27 @@ body {
 
     }
 
+    .campingMask{
+        display: flex;
+        justify-content: center;
+        margin-top: -35px;
+        margin-bottom: 10px;
+        height: 229px;
+        // border: #111313 solid 1px;
+        overflow: hidden;
+    }
+
+
     .campStatusBox {
         display: flex;
         position: relative;
         justify-content: center;
         margin-bottom: 10px;
-        height: 195px;
+        height: 310px;
+        width: 310px;
+        border-radius: 200px;
         overflow: hidden;
+        // border: #111313 solid 1px;
 
 
 
@@ -321,31 +591,93 @@ body {
 
         }
 
-        .camping {
-            width: 100%;
-            height: 200px;
-            display: flex;
-            justify-content: center;
 
+
+        .camping {
+            width: 350px;
+           height:220px; ;
+           position: absolute;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             z-index: 3;
-            margin-top: 8px;
+            margin-top: 25px;
             background-image: url(../imagenes/campingnoche.png);
-            background-size: contain;
+            background-size:cover;
             background-repeat: no-repeat;
             background-position: bottom;
             transition: all 3s;
 
 
-            .audioNoche {
-                z-index: 6;
-                display: flex;
+
+
+            @keyframes fireglow {
+                0% {
+                    transform: scale(1.1);
+                }
+
+                20% {
+                    transform: scale(1.0);
+                }
+
+                40% {
+                    transform: scale(0.9);
+                }
+
+                60% {
+                    transform: scale(1.0);
+                }
+
+                80% {
+                    transform: scale(1.1);
+                }
+
+                100% {
+                    transform: scale(0.9);
+                }
+            }
+
+
+
+            .fireglow {
+                
+                position: absolute;
+                animation-name: fireglow;
+                animation-iteration-count: infinite;
+                animation-duration: 3s;
+                animation-direction: alternate-reverse;
+                margin-left: 97px;
+                margin-top: 130px;
+                z-index: 2;
+            }
+
+
+            .fireRock {
+                width: 40px;
+                margin-left: 3px;
+                margin-left: 225px;
+                margin-top: 175px;
+                transition: 5s all;
+                z-index: 3;
+
+            }
+            .fireRockNigth {
+                position: absolute;
+                width: 40px;
+                margin-left: 3px;
+                margin-left: 225px;
+                margin-top: 175px;
+                transition: 5s all;
+                z-index: 3;
+
             }
 
             .campFire {
-                width: 60px;
-                height: 40px;
-                margin-left: 85px;
-                margin-top: 147px;
+                position: absolute;
+                width: 55px;
+                margin-top: 110px;
+                margin-left: 220px;
+                z-index: 4;
 
             }
 
@@ -363,14 +695,13 @@ body {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 200px;
+            width: 400px;
             overflow: hidden;
             z-index: 2;
 
 
             .sunMoonImg {
-                width: 50%;
-                margin-top: 60px;
+                width: 80%;
                 transform: rotate(0deg);
                 transition: 8s all;
             }
@@ -427,8 +758,8 @@ body {
                 position: absolute;
                 display: flex;
                 align-items: center;
-                            
-                
+
+
                 p {
                     color: #3F4E4F;
                     font-size: 12pt;
@@ -543,7 +874,6 @@ body {
 
                 .backPackContainer {
                     display: flex;
-
                     align-items: center;
                     border-radius: 4px;
                     background-color: rgb(220, 220, 220);
@@ -574,8 +904,13 @@ body {
             .backPackIcon {
 
                 img {
-
+                    cursor: pointer;
                     width: 40px;
+                    transition: 1s all;
+
+                    &:hover {
+                        transform: scale(1.1);
+                    }
                 }
 
             }

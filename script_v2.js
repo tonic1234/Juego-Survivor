@@ -11,13 +11,25 @@ const esperarB = document.querySelector("#esperarButton")
 const closeCraft = document.querySelector("#closeIconCraft")
 const closeRecollect = document.querySelector("#closeIconRecollect")
 const closeMsg = document.querySelector("#closeIconMsg")
+const closeInvt = document.querySelector("#closeIconInventory")
 const antorchaB = document.querySelector(".antorchaButton")
 const fogataB = document.querySelector(".fogataButton")
 const recolectorB = document.querySelector(".recolectorButton")
 const reStartB = document.querySelector(".reStartButton")
+const inventoryB = document.querySelector(".backPackIcon")
+const playB = document.querySelector(".startButton")
+const inventoryDiscart_1 = document.querySelector("#inventorySlotDiscart_1")
+const inventoryDiscart_2 = document.querySelector("#inventorySlotDiscart_2")
+const inventoryDiscart_3 = document.querySelector("#inventorySlotDiscart_3")
+const inventoryDiscart_4 = document.querySelector("#inventorySlotDiscart_4")
+const inventoryDiscart_5 = document.querySelector("#inventorySlotDiscart_5")
+const inventoryDiscart_6 = document.querySelector("#inventorySlotDiscart_6")
+const inventoryDiscart_7 = document.querySelector("#inventorySlotDiscart_7")
+const inventoryDiscart_8 = document.querySelector("#inventorySlotDiscart_8")
 
 
 // Objetos del juego.
+
 
 const recolector = {
     nombre: "Recolector de Agua",
@@ -86,7 +98,7 @@ const mochila = [botella]
 
 // Arreglo de los objetos recolectables.
 
-const objetos = [hoja, palo, piedra, palo, gusano, hoja, pajaro, fruta, piedra, palo, hoja, fruta, piedra, palo, hoja]
+const objetos = [hoja, palo, piedra, palo, hoja, fruta, piedra, palo, hoja, fruta, piedra, palo, hoja]
 
 
 // Arreglo de los objetos fabricables.
@@ -95,13 +107,14 @@ const fabricables = [antorcha, carnePajaro, fogata, recolector]
 
 // Arreglo de los upgrades del camping.
 
-const campingUpGradeFogata = []
+const campingUpGradeFogata = [fogata]
 const campingUpGradeRecolector = []
 const campingUpGradeAntorcha = []
 
 const tiempoFogata = []
 const tiempoRecolector = []
 const tiempoAntorcha = []
+const tiempoReloj = []
 
 // Arreglo de frases para la pantalla de espera .
 
@@ -127,12 +140,13 @@ let moral = 50
 
 let hora = 12
 let dias = 0
+let horasTotales
+let horasSobrevividas = horasTotales - 12
 
 // Arreglo usado para la recolección y esta formado por
 // los elemento que se recolectan en cada iteración.
 
 let recoleccion = []
-
 
 
 
@@ -166,10 +180,10 @@ function state() {
 
     // Función de iconos de upgrades
 
-    function upGradeIcons() {
+    function upGrades() {
 
 
-        // Reglas de duración de los objetos fabricables
+        // Reglas de duración de los upGrades del camping
 
         // La fogata dura 24 horas
 
@@ -189,12 +203,41 @@ function state() {
             campingUpGradeRecolector.shift()
         }
 
-        if (campingUpGradeFogata.length > 0) {
-            document.querySelector(".campFire").style.visibility = `visible`;
 
-        } else {
-            document.querySelector(".upgradeIconFogata").style.visibility = `hidden`;
+        // Reglas de horario para la fogata, piedras de la fogata y destello del fuego
+
+
+        if (campingUpGradeFogata.length == 0) {
             document.querySelector(".campFire").style.visibility = `hidden`;
+            document.querySelector(".fireRock").style.visibility = `hidden`;
+            document.querySelector(".fireRockNigth").style.visibility = `hidden`;
+            document.querySelector(".fireglow").style.visibility = `hidden`;
+        }
+
+        else if (campingUpGradeFogata.length > 0 && hora >= 6 && hora < 20) {
+            document.querySelector(".campFire").style.visibility = `visible`;
+            document.querySelector(".fireRock").style.visibility = `visible`;
+            document.querySelector(".fireRockNigth").style.visibility = `hidden`;
+            document.querySelector(".fireglow").style.visibility = `hidden`;
+
+        } else if (campingUpGradeFogata.length > 0 && hora >= 20 && hora <= 23 || hora >= 0 && hora <= 6) {
+            document.querySelector(".campFire").style.visibility = `visible`;
+            document.querySelector(".fireRock").style.visibility = `hidden`;
+            document.querySelector(".fireRockNigth").style.visibility = `visible`;
+            document.querySelector(".fireglow").style.visibility = `visible`;
+
+        } else if (campingUpGradeFogata.length > 0 && hora >= 0 && hora <= 6) {
+            document.querySelector(".campFire").style.visibility = `visible`;
+            document.querySelector(".fireRock").style.visibility = `hidden`;
+            document.querySelector(".fireRockNigth").style.visibility = `visible`;
+            document.querySelector(".fireglow").style.visibility = `visible`;
+        }
+
+        else {
+            document.querySelector(".campFire").style.visibility = `hidden`;
+            document.querySelector(".fireRock").style.visibility = `hidden`;
+            document.querySelector(".fireRockNigth").style.visibility = `hidden`;
+            document.querySelector(".fireglow").style.visibility = `hidden`;
         }
         if (campingUpGradeRecolector.length > 0) {
             document.querySelector(".upgradeIconRecolector").style.visibility = `visible`;
@@ -231,7 +274,6 @@ function state() {
             document.querySelector("#body").style.filter = `blur(0px)`
         } else if (cansancio > 100) {
             dormir()
-
         } else if (cansancio < 0) {
             cansancio = 100
         }
@@ -293,17 +335,20 @@ function state() {
     shakeIcon()
     blur()
     grayscale()
-    upGradeIcons()
+    upGrades()
 
+    // Si salud llega a cero se recupera el objeto Json y se imprime el nombre
 
     if (salud <= 0) {
         document.querySelector(".statusBarHealth").style.width = "0px";
-        message("Juego Perdido")
         document.querySelector(".loseBox").style.display = `flex`;
+        let objetoJson = JSON.parse(localStorage.getItem(1))
+        document.querySelector(".timeScore").innerHTML = objetoJson.nombre + " has sobrevivido " + (horasTotales - 12) + ":00 horas";
     }
 
+
     if (hambre > 80) {
-        salud -= 10
+        salud -= 1
     }
     if (hambre < 30) {
         salud += 1
@@ -312,8 +357,8 @@ function state() {
         salud += 2
     }
 
-    if (sed > 100) {
-        salud -= 3
+    if (sed > 80) {
+        salud -= 2
     }
     if (sed < 30) {
         salud += 1
@@ -322,9 +367,11 @@ function state() {
         salud += 2
     }
 
-    if (cansancio < 10) {
-        salud += 1
+
+    if (campingUpGradeFogata.length > 0) {
+        moral += 1
     }
+
 
     if (moral > 100) {
         moral = 100
@@ -360,6 +407,8 @@ function state() {
 function clock() {
 
 
+
+
     function clockPrint() {
         document.querySelector(".timeText").innerHTML = hora + ":00 hs";
         document.querySelector(".dayText").innerHTML = "Día: " + dias;
@@ -388,6 +437,7 @@ function clock() {
         horasTotales = (dias * 24) + hora
     }
 
+
 }
 
 // Función del sol y la luna. Funciona con una imagen circular con el sol y la luna de lados opuestos
@@ -400,23 +450,23 @@ function sunMoon() {
 
 }
 
-// Función del cielo. cambia el degradado del DOM según la hora
+// Función del cielo. cambia cielo y fondo según la hora y modifica el camping 
 
 function dayNight() {
     if (hora >= 6 && hora < 17) {
+        document.querySelector("body").style.backgroundImage = "url(../imagenes/cielodiabg.png)";
         document.querySelector(".sky").style.backgroundImage = "url(../imagenes/cielodia.png)";
         document.querySelector(".camping").style.backgroundImage = "url(../imagenes/campingdia.png)"
 
-    } else if (hora >= 17 && hora < 19) {
+    } else if (hora >= 17 && hora <= 19) {
+        document.querySelector("body").style.backgroundImage = "url(../imagenes/cielotardebg.png)";
         document.querySelector(".sky").style.backgroundImage = "url(../imagenes/cielotarde.png)";
         document.querySelector(".camping").style.backgroundImage = "url(../imagenes/campingdia.png)"
+
     } else {
+        document.querySelector("body").style.backgroundImage = "url(../imagenes/cielonochebg.png)";
         document.querySelector(".sky").style.backgroundImage = "url(../imagenes/cielonoche2.png)";
         document.querySelector(".camping").style.backgroundImage = "url(../imagenes/campingnoche.png)"
-        if (campingUpGradeFogata.length > 0) {
-            document.querySelector(".camping").style.backgroundImage = "url(../imagenes/campingnochefogata.png)"
-        }
-
 
     }
 
@@ -443,8 +493,8 @@ function comer() {
 
     } else if (mochila.some(alimento => alimento.nombre == "Fruta Silvestre") === true) {
         hambre -= fruta.valNut
-        cansancio += 20
-        sed += 20
+        cansancio += 5
+        sed -= 15
         moral += 10
         hora += 1
 
@@ -487,11 +537,17 @@ function comer() {
 
 function tomarAgua() {
 
-    if (sed <= 20) {
+
+    if (mochila.some(bebida => bebida.nombre == "Botella con agua") === false) {
+        message("No tienes agua para beber")
+    }
+    else if (sed <= 20) {
         message("No puedes beber agua, no tienes sed")
-    } else if (mochila.some(bebida => bebida.nombre == "Botella con agua") === true) {
-        sed -= 30
-        cansancio -= 10
+    }
+
+    else if (mochila.some(bebida => bebida.nombre == "Botella con agua") === true) {
+        sed -= 20
+        cansancio -= 5
         moral += 10
         hora += 1
 
@@ -548,7 +604,7 @@ function esperar() {
 
     sed += 10
     cansancio += 10
-    hambre += 20
+    hambre += 10
     moral -= 20
 
     for (let index = 0; index < 3; index++) {
@@ -565,7 +621,7 @@ function esperar() {
 
 
 function inventario() {
-    mochila.sort()
+
 
     // Si la mochila tiene mas de 8 elementos se borra el primer elemento del arreglo 
 
@@ -573,11 +629,133 @@ function inventario() {
         mochila.shift();
     }
 
+    // cada elemento del inventario aparce en la mochila y también en el menu inventario
+    // de donde se pueden tirar y dejan libre el lugar
+
+    if (mochila.length == 1) {
+        let inventorySlot_1 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_1").innerHTML = inventorySlot_1[0]
+        document.querySelector("#inventorySlot_2").innerHTML = ""
+        document.querySelector("#inventorySlot_3").innerHTML = ""
+        document.querySelector("#inventorySlot_4").innerHTML = ""
+        document.querySelector("#inventorySlot_5").innerHTML = ""
+        document.querySelector("#inventorySlot_6").innerHTML = ""
+        document.querySelector("#inventorySlot_7").innerHTML = ""
+        document.querySelector("#inventorySlot_8").innerHTML = ""
+
+    }
+    if (mochila.length == 2) {
+        let inventorySlot_1 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_1").innerHTML = inventorySlot_1[0]
+        let inventorySlot_2 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_2").innerHTML = inventorySlot_2[1]
+        document.querySelector("#inventorySlot_3").innerHTML = ""
+        document.querySelector("#inventorySlot_4").innerHTML = ""
+        document.querySelector("#inventorySlot_5").innerHTML = ""
+        document.querySelector("#inventorySlot_6").innerHTML = ""
+        document.querySelector("#inventorySlot_7").innerHTML = ""
+        document.querySelector("#inventorySlot_8").innerHTML = ""
+    }
+    if (mochila.length == 3) {
+        let inventorySlot_1 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_1").innerHTML = inventorySlot_1[0]
+        let inventorySlot_2 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_2").innerHTML = inventorySlot_2[1]
+        let inventorySlot_3 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_3").innerHTML = inventorySlot_3[2]
+        document.querySelector("#inventorySlot_4").innerHTML = ""
+        document.querySelector("#inventorySlot_5").innerHTML = ""
+        document.querySelector("#inventorySlot_6").innerHTML = ""
+        document.querySelector("#inventorySlot_7").innerHTML = ""
+        document.querySelector("#inventorySlot_8").innerHTML = ""
+    }
+    if (mochila.length == 4) {
+        let inventorySlot_1 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_1").innerHTML = inventorySlot_1[0]
+        let inventorySlot_2 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_2").innerHTML = inventorySlot_2[1]
+        let inventorySlot_3 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_3").innerHTML = inventorySlot_3[2]
+        let inventorySlot_4 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_4").innerHTML = inventorySlot_4[3]
+        document.querySelector("#inventorySlot_5").innerHTML = ""
+        document.querySelector("#inventorySlot_6").innerHTML = ""
+        document.querySelector("#inventorySlot_7").innerHTML = ""
+        document.querySelector("#inventorySlot_8").innerHTML = ""
+    }
+    if (mochila.length == 5) {
+        let inventorySlot_1 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_1").innerHTML = inventorySlot_1[0]
+        let inventorySlot_2 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_2").innerHTML = inventorySlot_2[1]
+        let inventorySlot_3 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_3").innerHTML = inventorySlot_3[2]
+        let inventorySlot_4 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_4").innerHTML = inventorySlot_4[3]
+        let inventorySlot_5 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_5").innerHTML = inventorySlot_5[4]
+        document.querySelector("#inventorySlot_6").innerHTML = ""
+        document.querySelector("#inventorySlot_7").innerHTML = ""
+        document.querySelector("#inventorySlot_8").innerHTML = ""
+    }
+    if (mochila.length == 6) {
+        let inventorySlot_1 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_1").innerHTML = inventorySlot_1[0]
+        let inventorySlot_2 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_2").innerHTML = inventorySlot_2[1]
+        let inventorySlot_3 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_3").innerHTML = inventorySlot_3[2]
+        let inventorySlot_4 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_4").innerHTML = inventorySlot_4[3]
+        let inventorySlot_5 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_5").innerHTML = inventorySlot_5[4]
+        let inventorySlot_6 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_6").innerHTML = inventorySlot_6[5]
+        document.querySelector("#inventorySlot_7").innerHTML = ""
+        document.querySelector("#inventorySlot_8").innerHTML = ""
+    }
+    if (mochila.length == 7) {
+        let inventorySlot_1 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_1").innerHTML = inventorySlot_1[0]
+        let inventorySlot_2 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_2").innerHTML = inventorySlot_2[1]
+        let inventorySlot_3 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_3").innerHTML = inventorySlot_3[2]
+        let inventorySlot_4 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_4").innerHTML = inventorySlot_4[3]
+        let inventorySlot_5 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_5").innerHTML = inventorySlot_5[4]
+        let inventorySlot_6 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_6").innerHTML = inventorySlot_6[5]
+        let inventorySlot_7 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_7").innerHTML = inventorySlot_7[6]
+        document.querySelector("#inventorySlot_8").innerHTML = ""
+    }
+    if (mochila.length == 8) {
+        let inventorySlot_1 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_1").innerHTML = inventorySlot_1[0]
+        let inventorySlot_2 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_2").innerHTML = inventorySlot_2[1]
+        let inventorySlot_3 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_3").innerHTML = inventorySlot_3[2]
+        let inventorySlot_4 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_4").innerHTML = inventorySlot_4[3]
+        let inventorySlot_5 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_5").innerHTML = inventorySlot_5[4]
+        let inventorySlot_6 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_6").innerHTML = inventorySlot_6[5]
+        let inventorySlot_7 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_7").innerHTML = inventorySlot_7[6]
+        let inventorySlot_8 = mochila.map((element) => element.imagen)
+        document.querySelector("#inventorySlot_8").innerHTML = inventorySlot_8[7]
+    }
+
+
     let imagenObjeto = mochila.map((element) => element.imagen)
-    document.querySelector(".backPackimg").innerHTML = imagenObjeto
+    setTimeout(function () {
+        document.querySelector(".backPackimg").innerHTML = imagenObjeto
+    }, 500);
 
-
-    // let nombresMochila = mochila.map((element) => element.nombre)
 
 
 }
@@ -633,7 +811,11 @@ function recolectar() {
 
         }
 
-    } else {
+
+    }
+
+
+    else {
         document.querySelector(".recollectBox").style.display = "none";
         message("Necesitas algo que te ilumine para poder recolectar de noche");
 
@@ -841,14 +1023,34 @@ function fabricar() {
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>INICIO DEL PROGRAMA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+//Botones de la interfaz
 
 
+playB.addEventListener('click', function () {
 
-// message("¿Qué quieres hacer?")
+    let jugador = document.querySelector(".nameBox").value
+    const player = {
+        nombre: jugador
+    }
+    //Se pide el nombre del jugador y luego se guarda en el local Storage para ser utilizado después
+    localStorage.setItem(1, JSON.stringify(player))
+    document.querySelector(".menuBg").classList.toggle('menuBgOut');
+
+
+    setTimeout(function () {
+        document.querySelector(".menuBg").style.display = "none";
+    }, 2500);
+
+});
+
+message(`Te despiertas en un bosque junto a una carpa, tienes un gran
+dolor de cabeza y no recuerdas nada, absolutamente nada.
+En el suelo, a pocos metros de ti, hay una mochila. La agarras,
+tiene una botella vacía, algunas hojas con instrucciones para fabricar
+elementos de supervivencia y un reloj que funciona pero tiene la correa rota.`)
 
 gameProgress()
 
-//Botones de la interfaz
 
 comerB.addEventListener('click', function () {
     comer();
@@ -884,12 +1086,70 @@ fabricarB.addEventListener('click', function () {
     document.querySelector(".craftingBox").style.display = "flex";
     fabricar()
 });
-closeCraft.addEventListener('click', function () {
-    document.querySelector(".craftingBox").style.display = "none";
+
+
+inventoryB.addEventListener('click', function () {
+    document.querySelector(".inventoryBox").style.display = "flex";
+
 });
+
+
+
 closeMsg.addEventListener('click', function () {
     document.querySelector(".messageBox").style.display = "none";
 });
+
+closeCraft.addEventListener('click', function () {
+    document.querySelector(".craftingBox").style.display = "none";
+    document.querySelector(".messageBox").style.display = "none";
+});
+
+closeInvt.addEventListener('click', function () {
+    document.querySelector(".inventoryBox").style.display = "none";
+});
+
 reStartB.addEventListener('click', function () {
     window.location.reload()
+});
+
+inventoryDiscart_1.addEventListener('click', function () {
+    mochila.splice(0, 1)
+    document.querySelector("#inventorySlot_1").innerHTML = ""
+    gameProgress()
+});
+inventoryDiscart_2.addEventListener('click', function () {
+    mochila.splice(1, 1)
+    document.querySelector("#inventorySlot_2").innerHTML = ""
+    gameProgress()
+});
+inventoryDiscart_3.addEventListener('click', function () {
+    mochila.splice(2, 1)
+    document.querySelector("#inventorySlot_3").innerHTML = ""
+    gameProgress()
+});
+inventoryDiscart_4.addEventListener('click', function () {
+    mochila.splice(3, 1)
+    document.querySelector("#inventorySlot_4").innerHTML = ""
+    gameProgress()
+});
+inventoryDiscart_5.addEventListener('click', function () {
+    mochila.splice(4, 1)
+    document.querySelector("#inventorySlot_5").innerHTML = ""
+    gameProgress()
+});
+inventoryDiscart_6.addEventListener('click', function () {
+    mochila.splice(5, 1)
+    document.querySelector("#inventorySlot_6").innerHTML = ""
+
+    gameProgress()
+});
+inventoryDiscart_7.addEventListener('click', function () {
+    mochila.splice(6, 1)
+    document.querySelector("#inventorySlot_7").innerHTML = ""
+    gameProgress()
+});
+inventoryDiscart_8.addEventListener('click', function () {
+    mochila.splice(7, 1)
+    document.querySelector("#inventorySlot_8").innerHTML = ""
+    gameProgress()
 });
