@@ -107,7 +107,7 @@ const fabricables = [antorcha, carnePajaro, fogata, recolector]
 
 // Arreglo de los upgrades del camping.
 
-const campingUpGradeFogata = [fogata]
+const campingUpGradeFogata = []
 const campingUpGradeRecolector = []
 const campingUpGradeAntorcha = []
 
@@ -204,7 +204,7 @@ function state() {
         }
 
 
-        // Reglas de horario para la fogata, piedras de la fogata y destello del fuego
+// Reglas de horario para la fogata, piedras de la fogata y destello del fuego
 
 
         if (campingUpGradeFogata.length == 0) {
@@ -454,17 +454,17 @@ function sunMoon() {
 
 function dayNight() {
     if (hora >= 6 && hora < 17) {
-        document.querySelector("body").style.backgroundImage = "url(../imagenes/cielodiabg.png)";
+        document.querySelector("body").style.backgroundImage = "url(../imagenes/cielodiabg.jpg)";
         document.querySelector(".sky").style.backgroundImage = "url(../imagenes/cielodia.png)";
         document.querySelector(".camping").style.backgroundImage = "url(../imagenes/campingdia.png)"
 
     } else if (hora >= 17 && hora <= 19) {
-        document.querySelector("body").style.backgroundImage = "url(../imagenes/cielotardebg.png)";
+        document.querySelector("body").style.backgroundImage = "url(../imagenes/cielotardebg.jpg)";
         document.querySelector(".sky").style.backgroundImage = "url(../imagenes/cielotarde.png)";
         document.querySelector(".camping").style.backgroundImage = "url(../imagenes/campingdia.png)"
 
     } else {
-        document.querySelector("body").style.backgroundImage = "url(../imagenes/cielonochebg.png)";
+        document.querySelector("body").style.backgroundImage = "url(../imagenes/cielonochebg.jpg)";
         document.querySelector(".sky").style.backgroundImage = "url(../imagenes/cielonoche2.png)";
         document.querySelector(".camping").style.backgroundImage = "url(../imagenes/campingnoche.png)"
 
