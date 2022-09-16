@@ -459,7 +459,7 @@ function dayNight() {
         document.querySelector(".camping").style.backgroundImage = "url(../imagenes/campingdia.png)"
 
     } else if (hora >= 17 && hora <= 19) {
-        document.querySelector("body").style.backgroundImage = "url(../imagenes/cielotardebg.jpg)";
+        document.querySelector("body").style.backgroundImage = "url(../imagenes/cielotardebg.png)";
         document.querySelector(".sky").style.backgroundImage = "url(../imagenes/cielotarde.png)";
         document.querySelector(".camping").style.backgroundImage = "url(../imagenes/campingdia.png)"
 
@@ -1023,13 +1023,15 @@ function fabricar() {
 
 // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>INICIO DEL PROGRAMA>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+//Pantalla de carga
+
 
 setTimeout(function () {
     document.querySelector(".loadScreen").style.backgroundImage = "url(../imagenes/cielodiabg.png)";
 }, 2500);
 
 setTimeout(function () {
-    document.querySelector(".loadScreen").style.backgroundImage = "url(../imagenes/cielotardebg.jpg)";
+    document.querySelector(".loadScreen").style.backgroundImage = "url(../imagenes/cielotardebg.png)";
 }, 3500);
 
 setTimeout(function () {
